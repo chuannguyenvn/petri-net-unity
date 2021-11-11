@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8958901444253406478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8958901444253406476}
+  - component: {fileID: 8958901444253406479}
+  m_Layer: 0
+  m_Name: Program Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8958901444253406476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958901444253406478}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8958901444253406479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958901444253406478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95743ebb616417b42b4f5472734a7e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statePrefab: {fileID: 7779460125196590158, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
+  transitionPrefab: {fileID: 1514574470365307338, guid: 68ec1975a07b8854bac617550f35f98b, type: 3}
+  tokenPrefab: {fileID: 423321873847520200, guid: 4cf7b8adda8bda44d99dc77e2c618093, type: 3}
+  arrowPrefab: {fileID: 986413335591232987, guid: b23c3b66f4bc5dc429b2a91214fbfb0c, type: 3}
+  stateMenuPrefab: {fileID: 8191002528633853834, guid: 83f1202995c50d946b5d9659fc32faf0, type: 3}
+  transitionMenuPrefab: {fileID: 8396621508398154887, guid: 8252da10c5072d046aa5b2014a09b8d1, type: 3}
+  defaultMenu: {fileID: 0}
+  stateMenu: {fileID: 8191002528633853828, guid: 83f1202995c50d946b5d9659fc32faf0, type: 3}
+  transitionMenu: {fileID: 8396621508398154888, guid: 8252da10c5072d046aa5b2014a09b8d1, type: 3}
+  canvas: {fileID: 0}
+  mouse: {fileID: 0}
+  tokenScale: 0.3
