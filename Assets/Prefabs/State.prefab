@@ -176,7 +176,7 @@ MonoBehaviour:
   inputField: {fileID: 4611489311902084247}
   inTransitions: []
   outTransitions: []
-  name: {fileID: 4611489311902084247}
+  stateName: {fileID: 4611489311902084247}
   tokenCount: {fileID: 5263345405623168012}
 --- !u!58 &665403098999297093
 CircleCollider2D:

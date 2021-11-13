@@ -1,23 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMenu : Menu
+/// The menu that pops out when the user right-click a state ///
+public class StateMenu : Menu 
 {
-    [SerializeField] private GameObject addToken;
-    [SerializeField] private GameObject removeToken;
-    [SerializeField] private GameObject newArc;
-    [SerializeField] private GameObject remove;
+    [SerializeField] private GameObject addToken; // On the left
+    [SerializeField] private GameObject removeToken; // On the right
+    [SerializeField] private GameObject newArc; // On top
+    [SerializeField] private GameObject remove; // On bottom
 
-    public State currentState;
+    public State currentState; // The corresponding state
 
+    // Add a new token to currentState
     public void AddToken()
     {
         Token newToken = ProgramManager.Instance.NewToken();
-        newToken.transform.position = transform.position + Vector3.up * 100f * Screen.width/1920f;
+        newToken.transform.position = transform.position + Vector3.up * 100f * Screen.width / 1920f;
+        newToken.prevPos = newToken.transform.position;
         newToken.destination = currentState;
     }
-
+    
+    // Remove a token to currentState
     public void RemoveToken()
     {
         if (currentState.tokens.Count > 0)
@@ -28,6 +30,7 @@ public class StateMenu : Menu
         }
     }
 
+    // Construct an arc from this state
     public void NewArc()
     {
         Arc newArc = ProgramManager.Instance.NewArrow();
@@ -38,6 +41,7 @@ public class StateMenu : Menu
         Hide();
     }
 
+    // Remove this state. Several methods will be called in order to handle the removal properly
     public void Remove()
     {
         StopAllCoroutines();
@@ -45,8 +49,8 @@ public class StateMenu : Menu
         Hide();
         Destroy(gameObject);
     }
-
-
+    
+    // Show the menu, with appropriate selection positions and animations
     public override void Show(Vector2 position)
     {
         transform.SetSiblingIndex(0);
@@ -55,34 +59,31 @@ public class StateMenu : Menu
         StartCoroutine(MoveUIObject_CO(removeToken, Vector2.down * 100,false));
         StartCoroutine(MoveUIObject_CO(newArc, Vector2.left * 100,false));
         StartCoroutine(MoveUIObject_CO(remove, Vector2.right * 100,false));
-        StartCoroutine(MoveUIObject_CO(currentState.name.gameObject, Vector2.one.normalized * -70,false));
+        StartCoroutine(MoveUIObject_CO(currentState.stateName.gameObject, Vector2.one.normalized * -70,false));
         StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject, Vector2.one.normalized *70,false));
-        isHiding = false;
     }
-
+    
+    // Hide the menu, with animations
     public override void Hide()
     {
         transform.SetSiblingIndex(0);
-        //StopAllCoroutines();
         StartCoroutine(MoveUIObject_CO(addToken, Vector2.zero, true));
         StartCoroutine(MoveUIObject_CO(removeToken, Vector2.zero, true));
         StartCoroutine(MoveUIObject_CO(newArc, Vector2.zero, true));
         StartCoroutine(MoveUIObject_CO(remove, Vector2.zero, true));
-        StartCoroutine(MoveUIObject_CO(currentState.name.gameObject, Vector2.down * 70, false));
-        StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject, Vector2.up * 70, false));
-        isHiding = true;
+        StartCoroutine(MoveUIObject_CO(currentState.stateName.gameObject, Vector2.down * 70, true));
+        StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject, Vector2.up * 70, true));
     }
 
+    // Quickly hide the menu without animations
     public override void ForceHide()
     {
         transform.SetSiblingIndex(0);
-        //StopAllCoroutines();
         addToken.transform.position = Vector2.zero;
         removeToken.transform.position = Vector2.zero;
         newArc.transform.position = Vector2.zero;
         remove.transform.position = Vector2.zero;
-        StartCoroutine(MoveUIObject_CO(currentState.name.gameObject, Vector2.down * 70, false));
+        StartCoroutine(MoveUIObject_CO(currentState.stateName.gameObject, Vector2.down * 70, false));
         StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject, Vector2.up * 70, false));
-        isHiding = true;
     }
 }

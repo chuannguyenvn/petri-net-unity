@@ -2,9 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Destination : MonoBehaviour
+
+public class Destination : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBeginDragHandler,
+    IEndDragHandler,
+    IDragHandler
 {
     public List<Token> tokens;
     protected Mouse mouse;
@@ -42,5 +46,25 @@ public class Destination : MonoBehaviour
         }
 
         transform.localScale = Vector3.one;
+    }
+
+    public virtual void OnPointerClick(PointerEventData eventData)
+    {
+    }
+
+    public virtual void OnPointerUp(PointerEventData eventData)
+    {
+    }
+
+    public virtual void OnBeginDrag(PointerEventData eventData)
+    {
+    }
+
+    public virtual void OnEndDrag(PointerEventData eventData)
+    {
+    }
+
+    public virtual void OnDrag(PointerEventData eventData)
+    {
     }
 }

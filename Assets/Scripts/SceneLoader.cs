@@ -1,15 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// Simple class used to trigger button events to load scenes ///
 public class SceneLoader : MonoBehaviour
 {
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene(0);
-    }
-
     public void GetSceneItem1()
     {
         SceneManager.LoadScene(1);
@@ -33,5 +27,10 @@ public class SceneLoader : MonoBehaviour
     public void GetSceneDIY()
     {
         SceneManager.LoadScene(5);
+    }
+
+    public void GetSceneMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// Class that take care of all mouse operations. Work with Background ///
 public class Mouse : MonoBehaviour
 {
     public Arc currentArc;
@@ -10,18 +8,15 @@ public class Mouse : MonoBehaviour
 
     private void Start()
     {
+        // Add Deselect() to the event that handles deselecting
         ProgramManager.Instance.canvas.GetComponent<Background>().onDeselectClick
             .AddListener(Deselect);
     }
 
+    // Matches mouse position
     void Update()
     {
         transform.position = Input.mousePosition;
-    }
-
-    public void SetTarget(Destination destination)
-    {
-        currentArc.target = destination.transform;
     }
 
     private void Deselect()

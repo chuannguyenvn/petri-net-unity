@@ -6,37 +6,38 @@ using UnityEngine.Events;
 
 public class Ticker : MonoBehaviour
 {
-    public static Ticker Instance;
-
     [HideInInspector] public UnityEvent OnTick;
 
     [SerializeField] public float tickPeriod = 1f;
     [SerializeField] private float currentTick = 1f;
 
-    public GameObject arrowPrefab;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
+    private bool isTicking = false;
 
     void Start()
     {
-        OnTick.AddListener(TickLog);
     }
 
     void Update()
     {
+        if (isTicking)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, Time.time * 100);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
         currentTick -= Time.deltaTime;
-        if (currentTick <= 0f)
+        if (currentTick <= 0f && isTicking)
         {
             OnTick.Invoke();
             currentTick = tickPeriod;
         }
     }
 
-    private void TickLog()
+    public void ToggleTicking()
     {
-        Debug.Log("Ticked!");
+        isTicking = !isTicking;
     }
 }

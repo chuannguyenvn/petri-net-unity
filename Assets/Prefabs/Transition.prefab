@@ -96,7 +96,7 @@ MonoBehaviour:
   inputField: {fileID: 4970436803752780532}
   inStates: []
   outStates: []
-  name: {fileID: 4970436803752780532}
+  transitionName: {fileID: 4970436803752780532}
 --- !u!61 &-1690811301005698404
 BoxCollider2D:
   m_ObjectHideFlags: 0
