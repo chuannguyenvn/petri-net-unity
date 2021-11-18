@@ -11,14 +11,14 @@ public class DefaultMenu : Menu // Menu provides base methods
     // Generate a new state, set its position appropriately, then hide the menu 
     public void NewState()
     {
-        ProgramManager.Instance.NewState().transform.position = transform.position;
+        new AddDestinationCommand(transform.position, true).Execute();
         Hide();
     }
 
     // Generate a new transition, set its position appropriately, then hide the menu 
     public void NewTransition()
     {
-        ProgramManager.Instance.NewTransition().transform.position = transform.position;
+        new AddDestinationCommand(transform.position, false).Execute();
         Hide();
     }
 

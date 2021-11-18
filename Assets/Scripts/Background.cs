@@ -23,7 +23,6 @@ public class Background : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         if (isPerforming) return;
-        
 
         if (eventData.button == PointerEventData.InputButton.Left)
         {

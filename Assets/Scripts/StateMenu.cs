@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// The menu that pops out when the user right-click a state ///
-public class StateMenu : Menu 
+public class StateMenu : Menu
 {
     [SerializeField] private GameObject addToken; // On the left
     [SerializeField] private GameObject removeToken; // On the right
@@ -13,20 +13,18 @@ public class StateMenu : Menu
     // Add a new token to currentState
     public void AddToken()
     {
-        Token newToken = ProgramManager.Instance.NewToken();
-        newToken.transform.position = transform.position + Vector3.up * 100f * Screen.width / 1920f;
-        newToken.prevPos = newToken.transform.position;
-        newToken.destination = currentState;
+        // currentState.addTokenCommands.Enqueue(new AddTokenCommand(currentState));
+        // currentState.addTokenCommands.Peek().Execute();
+        
+        new AddTokenCommand(currentState).Execute();
     }
-    
+
     // Remove a token to currentState
     public void RemoveToken()
     {
         if (currentState.tokens.Count > 0)
         {
-            Token toBeRemoved = currentState.tokens[0];
-            currentState.tokens.RemoveAt(0);
-            Destroy(toBeRemoved.gameObject);
+            new RemoveTokenCommand(currentState).Execute();
         }
     }
 
@@ -45,24 +43,26 @@ public class StateMenu : Menu
     public void Remove()
     {
         StopAllCoroutines();
-        Destroy(currentState.gameObject);
-        Hide();
-        Destroy(gameObject);
+        new RemoveDestinationCommand(currentState).Execute();
+        ForceHide();
+        //Destroy(gameObject);
     }
-    
+
     // Show the menu, with appropriate selection positions and animations
     public override void Show(Vector2 position)
     {
         transform.SetSiblingIndex(0);
         transform.position = position;
-        StartCoroutine(MoveUIObject_CO(addToken, Vector2.up * 100,false));
-        StartCoroutine(MoveUIObject_CO(removeToken, Vector2.down * 100,false));
-        StartCoroutine(MoveUIObject_CO(newArc, Vector2.left * 100,false));
-        StartCoroutine(MoveUIObject_CO(remove, Vector2.right * 100,false));
-        StartCoroutine(MoveUIObject_CO(currentState.stateName.gameObject, Vector2.one.normalized * -70,false));
-        StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject, Vector2.one.normalized *70,false));
+        StartCoroutine(MoveUIObject_CO(addToken, Vector2.up * 100, false));
+        StartCoroutine(MoveUIObject_CO(removeToken, Vector2.down * 100, false));
+        StartCoroutine(MoveUIObject_CO(newArc, Vector2.left * 100, false));
+        StartCoroutine(MoveUIObject_CO(remove, Vector2.right * 100, false));
+        StartCoroutine(MoveUIObject_CO(currentState.inputField.gameObject,
+            Vector2.one.normalized * -100, false));
+        StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject,
+            Vector2.one.normalized * 70, false));
     }
-    
+
     // Hide the menu, with animations
     public override void Hide()
     {
@@ -71,7 +71,7 @@ public class StateMenu : Menu
         StartCoroutine(MoveUIObject_CO(removeToken, Vector2.zero, true));
         StartCoroutine(MoveUIObject_CO(newArc, Vector2.zero, true));
         StartCoroutine(MoveUIObject_CO(remove, Vector2.zero, true));
-        StartCoroutine(MoveUIObject_CO(currentState.stateName.gameObject, Vector2.down * 70, true));
+        StartCoroutine(MoveUIObject_CO(currentState.inputField.gameObject, Vector2.down * 70, true));
         StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject, Vector2.up * 70, true));
     }
 
@@ -83,7 +83,8 @@ public class StateMenu : Menu
         removeToken.transform.position = Vector2.zero;
         newArc.transform.position = Vector2.zero;
         remove.transform.position = Vector2.zero;
-        StartCoroutine(MoveUIObject_CO(currentState.stateName.gameObject, Vector2.down * 70, false));
+        StartCoroutine(MoveUIObject_CO(currentState.inputField.gameObject, Vector2.down * 70,
+            false));
         StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject, Vector2.up * 70, false));
     }
 }

@@ -8,6 +8,7 @@ public class Token : MonoBehaviour
     public Destination destination; // The state/transition that this token belongs to
     private bool isMoving = false;
     public Vector2 prevPos;
+    public FireCommand firingCommand;
     void Start()
     {
         transform.localScale = Vector3.one * ProgramManager.Instance.tokenScale;
@@ -38,11 +39,14 @@ public class Token : MonoBehaviour
         }
         else if (isMoving)
         {
+            Debug.Log("Done Moving");
             isMoving = false;
             destination.tokens.Add(this);
             transform.SetParent(destination.transform);
             transform.localPosition = Vector3.zero;
             prevPos = transform.position;
+
+            firingCommand?.firingTokens.Remove(this);
         }
     }
 
@@ -50,5 +54,11 @@ public class Token : MonoBehaviour
     public void MoveTo(Destination targetDestination)
     {
         destination = targetDestination;
+    }
+
+    public void Destroy()
+    {
+        destination.tokens.Remove(this);
+        Destroy(gameObject);
     }
 }

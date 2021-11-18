@@ -7,37 +7,23 @@ public class State : Destination
 {
     /// The states inside a Petri net ///
     /// 
-    public List<Transition> inTransitions; // Transitions that go to this state
-    public List<Transition> outTransitions; // Transitions that go away from this state
+    //public List<Transition> inTransitions; // Transitions that go to this state
+    //public List<Transition> outTransitions; // Transitions that go away from this state
 
-    public InputField stateName;
     public Text tokenCount;
-    private StateMenu stateMenu;
+    //public Queue<AddTokenCommand> addTokenCommands;
 
     public override void Start()
     {
         base.Start();
-
-        // If no name is provided initially, get a default name of S[number]
-        if (stateName.text == string.Empty) stateName.text = "S" + ProgramManager.Instance.StateCounter;
-
-        // Generate a unique identifier for the state
-        string randomStr = ProgramManager.Instance.RandomString(transform.position.magnitude);
-        identifier = stateName.text + randomStr;
-
+        
         // Getting a menu for the state
-        stateMenu = ProgramManager.Instance.NewStateMenu();
-        stateMenu.currentState = this;
+        menu = ProgramManager.Instance.NewStateMenu();
+        ((StateMenu)menu).currentState = this;
+        
+       
 
-        // Linking this state with the outTransitions by using arcs
-        foreach (Transition transition in outTransitions)
-        {
-            Arc arc = Instantiate(ProgramManager.Instance.arrowPrefab,
-                ProgramManager.Instance.canvas.transform).GetComponent<Arc>();
-
-            arc.origin = transform;
-            arc.target = transition.transform;
-        }
+        //addTokenCommands = new Queue<AddTokenCommand>();
     }
 
     void Update()
@@ -99,13 +85,37 @@ public class State : Destination
         tokens.RemoveAt(tokens.Count - 1);
     }
 
+    public void ForceAddToken(int count = 1)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Token newToken = ProgramManager.Instance.NewToken();
+            newToken.transform.position = transform.position;
+            newToken.prevPos = newToken.transform.position;
+            newToken.destination = this;
+            newToken.transform.SetParent(transform);
+            tokens.Add(newToken);
+        }
+    }
+    
+    public void ForceRemoveToken()
+    {
+        Token toBeDeleted = tokens[tokens.Count - 1];
+        tokens.RemoveAt(tokens.Count - 1);
+        toBeDeleted.Destroy();
+    }
+    
     public override void OnDrag(PointerEventData eventData)
     {
+        base.OnDrag(eventData);
         transform.position += (Vector3)eventData.delta;
     }
 
     public override void OnPointerClick(PointerEventData eventData)
-    {
+    {        
+        base.OnPointerClick(eventData);
+        transform.SetSiblingIndex(transform.parent.childCount - 1);
+        
         // If the mouse is holding an arc
         if (mouse.currentArc != null)
         {
@@ -114,8 +124,8 @@ public class State : Destination
             
             // If can't find the transition from the arc or the transition is duplicated
             if (arcOrigin == null || 
-                inTransitions.Find(x => x.identifier == arcOrigin.identifier) ||
-                outTransitions.Find(x => x.identifier == arcOrigin.identifier))
+                inDestinations.Find(x => x.identifier == arcOrigin.identifier) ||
+                outDestinations.Find(x => x.identifier == arcOrigin.identifier))
             {
                 Destroy(mouse.currentArc.gameObject);
                 mouse.currentArc = null;
@@ -123,33 +133,14 @@ public class State : Destination
             }
 
             // Else configurate the arc
-            mouse.currentArc.target = transform;
-            inTransitions.Add(arcOrigin);
-            arcOrigin.outStates.Add(this);
+            new NewArcCommand(arcOrigin, this, mouse.currentArc).Execute();
             mouse.currentArc = null;
         }
         // If right-clicked, bring out a menu
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
             background.onDeselectClick.Invoke();
-            stateMenu.currentState = this;
-            stateMenu.Show(transform.position);
-        }
-    }
-
-    // When being destroyed, properly remove all relationships
-    private void OnDestroy()
-    {
-        foreach (Transition transition in inTransitions)
-        {
-            transition.outStates.RemoveAt(
-                transition.outStates.FindIndex(x => x.identifier == identifier));
-        }
-
-        foreach (Transition transition in outTransitions)
-        {
-            transition.inStates.RemoveAt(
-                transition.inStates.FindIndex(x => x.identifier == identifier));
+            menu.Show(transform.position);
         }
     }
 }

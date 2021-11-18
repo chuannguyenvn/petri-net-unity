@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// Singleton class that handle common operations and resources ///
 public class ProgramManager : MonoBehaviour
@@ -37,6 +40,9 @@ public class ProgramManager : MonoBehaviour
     public int StateCounter => ++stateCounter;
     public int TransitionCounter => ++transitionCounter;
 
+
+    public Stack<Command> history;
+    
     private void Awake()
     {
         Instance = this; // Singleton
@@ -47,8 +53,10 @@ public class ProgramManager : MonoBehaviour
         // Set the counters by counting all states and transitions in scene
         stateCounter += FindObjectsOfType<State>().Length;
         transitionCounter += FindObjectsOfType<Transition>().Length;
+        history = new Stack<Command>();
     }
 
+    #region InstantiateMethods
     // Below are several methods for instantiating prefabs quickly
     // The instantiated object will be parented to the canvas
     public State NewState()
@@ -80,7 +88,8 @@ public class ProgramManager : MonoBehaviour
     {
         return Instantiate(transitionMenuPrefab, canvas.transform).GetComponent<TransitionMenu>();
     }
-
+    #endregion
+    
     // Method for generating random string used in states and transitions' identifiers
     // The identifiers will be used to check each state/transition uniqueness
     public string RandomString(float seed)
@@ -97,5 +106,15 @@ public class ProgramManager : MonoBehaviour
         }
 
         return result;
+    }
+
+    public void Undo()
+    {
+        if (history.Count > 0)
+        {
+            history.Peek().Unexecute();
+            history.Pop();
+        }
+        else Debug.Log("History is empty");
     }
 }

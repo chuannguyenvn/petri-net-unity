@@ -20,7 +20,8 @@ public class Arc : MonoBehaviour
     void Update()
     {
         // Destroy the arc immediately if missing any point
-        if (origin == null || target == null) Destroy(gameObject);
+        if (origin == null || target == null || origin.gameObject.activeSelf == false ||
+            target.gameObject.activeSelf == false) Destroy(gameObject);
         transform.SetSiblingIndex(0); // Arcs should always be behind other objects
         if (origin == null || target == null) return;
 
@@ -55,7 +56,7 @@ public class Arc : MonoBehaviour
 
         if (Mathf.Abs(Vector3.SignedAngle(direction, Vector3.right, Vector3.forward)) > 90)
             rotateDeg += 180; // Flip the arrow if needed
-        
+
         arrowHead.transform.eulerAngles = Vector3.forward * rotateDeg; // Finally set the rotation
     }
 }

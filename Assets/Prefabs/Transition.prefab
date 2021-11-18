@@ -91,12 +91,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230512db2129b5945a1a36615840e1d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inDestinations: []
+  outDestinations: []
   tokens: []
   identifier: 
   inputField: {fileID: 4970436803752780532}
-  inStates: []
-  outStates: []
-  transitionName: {fileID: 4970436803752780532}
+  menu: {fileID: 0}
 --- !u!61 &-1690811301005698404
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -205,6 +205,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7465023860005804198}
     m_Modifications:
+    - target: {fileID: 252457397390725725, guid: 5d66485dea5d5a64f9b63d2904c61e51, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4287145413886628582, guid: 5d66485dea5d5a64f9b63d2904c61e51, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

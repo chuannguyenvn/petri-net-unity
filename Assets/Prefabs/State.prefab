@@ -171,12 +171,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f878f034e13239469b0117fc3dac821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inDestinations: []
+  outDestinations: []
   tokens: []
   identifier: 
   inputField: {fileID: 4611489311902084247}
-  inTransitions: []
-  outTransitions: []
-  stateName: {fileID: 4611489311902084247}
+  menu: {fileID: 0}
   tokenCount: {fileID: 5263345405623168012}
 --- !u!58 &665403098999297093
 CircleCollider2D:
@@ -276,6 +276,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7779460125196590157}
     m_Modifications:
+    - target: {fileID: 252457397390725725, guid: 5d66485dea5d5a64f9b63d2904c61e51, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4287145413886628582, guid: 5d66485dea5d5a64f9b63d2904c61e51, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -360,9 +364,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5953196207272320193, guid: 5d66485dea5d5a64f9b63d2904c61e51, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7485338864360305718, guid: 5d66485dea5d5a64f9b63d2904c61e51, type: 3}
       propertyPath: m_Name
       value: Name Field
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485338864360305718, guid: 5d66485dea5d5a64f9b63d2904c61e51, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d66485dea5d5a64f9b63d2904c61e51, type: 3}

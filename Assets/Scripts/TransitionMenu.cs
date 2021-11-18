@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 /// The menu that pops out when the user right-click a transition ///
 public class TransitionMenu : Menu 
@@ -12,9 +13,9 @@ public class TransitionMenu : Menu
     public void Remove()
     {
         StopAllCoroutines();
-        Destroy(currentTransition.gameObject);
-        Hide();
-        Destroy(gameObject);
+        new RemoveDestinationCommand(currentTransition).Execute();
+        ForceHide();
+        //Destroy(gameObject);
     }
     
     // Construct an arc from this transition
