@@ -6,12 +6,8 @@ using UnityEngine.UI;
 public class State : Destination
 {
     /// The states inside a Petri net ///
-    /// 
-    //public List<Transition> inTransitions; // Transitions that go to this state
-    //public List<Transition> outTransitions; // Transitions that go away from this state
 
     public Text tokenCount;
-    //public Queue<AddTokenCommand> addTokenCommands;
 
     public override void Start()
     {
@@ -20,10 +16,6 @@ public class State : Destination
         // Getting a menu for the state
         menu = ProgramManager.Instance.NewStateMenu();
         ((StateMenu)menu).currentState = this;
-        
-       
-
-        //addTokenCommands = new Queue<AddTokenCommand>();
     }
 
     void Update()

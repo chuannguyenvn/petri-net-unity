@@ -40,7 +40,8 @@ public class ProgramManager : MonoBehaviour
     public int StateCounter => ++stateCounter;
     public int TransitionCounter => ++transitionCounter;
 
-
+    public List<State> states;
+    public List<Transition> transitions;
     public Stack<Command> history;
     
     private void Awake()
@@ -50,23 +51,53 @@ public class ProgramManager : MonoBehaviour
 
     void Start()
     {
+        states = new List<State>();
+        transitions = new List<Transition>();
+
+        foreach (State state in FindObjectsOfType<State>())
+        {
+            states.Add(state);
+        }
+        
+        foreach (Transition transition in FindObjectsOfType<Transition>())
+        {
+            transitions.Add(transition);
+        }
+        
         // Set the counters by counting all states and transitions in scene
-        stateCounter += FindObjectsOfType<State>().Length;
-        transitionCounter += FindObjectsOfType<Transition>().Length;
+        stateCounter += states.Count;
+        transitionCounter += transitions.Count;
+        
         history = new Stack<Command>();
     }
 
+    public Destination Find(string identifier)
+    {
+        int index = states.FindIndex(x => x.identifier == identifier);
+        if (index != -1) return states[index];
+        
+        index = transitions.FindIndex(x => x.identifier == identifier);
+        if (index != -1) return transitions[index];
+
+        Debug.LogError("Destination doesn't exist.");
+        return null;
+    }
+    
     #region InstantiateMethods
     // Below are several methods for instantiating prefabs quickly
     // The instantiated object will be parented to the canvas
     public State NewState()
     {
-        return Instantiate(statePrefab, canvas.transform).GetComponent<State>();
+        State newState = Instantiate(statePrefab, canvas.transform).GetComponent<State>();
+        states.Add(newState);
+        return newState;
     }
 
     public Transition NewTransition()
     {
-        return Instantiate(transitionPrefab, canvas.transform).GetComponent<Transition>();
+        Transition newTransition = Instantiate(transitionPrefab, canvas.transform).GetComponent<Transition>();
+        transitions.Add(newTransition);
+        return newTransition;
     }
 
     public Token NewToken()
