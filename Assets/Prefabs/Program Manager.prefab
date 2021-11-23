@@ -52,5 +52,8 @@ MonoBehaviour:
   defaultMenu: {fileID: 3376603765930434131, guid: 31783878b07f4114f9f7a7c510c514f1, type: 3}
   ticker: {fileID: 1195781279179669224, guid: 23599ba3e1b823044940ea678a473e00, type: 3}
   canvas: {fileID: 8155508179837134251, guid: 1cb6171dacd299443991c1cd7b190f50, type: 3}
-  mouse: {fileID: 0}
+  mouse: {fileID: 7705779328066787315, guid: a031cab156afc754ab12a6f6ce284a60, type: 3}
+  tooltip: {fileID: 6108764109424588810, guid: 66dede3904609034f9047b8de3dd1623, type: 3}
   tokenScale: 0.3
+  states: []
+  transitions: []

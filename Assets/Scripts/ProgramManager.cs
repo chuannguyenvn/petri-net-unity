@@ -11,6 +11,8 @@ public class ProgramManager : MonoBehaviour
     // Singleton instance
     public static ProgramManager Instance;
 
+    public bool isDisplaying = false;
+    
     // Several prefabs for instantiating
     public GameObject statePrefab;
     public GameObject transitionPrefab;
@@ -30,6 +32,8 @@ public class ProgramManager : MonoBehaviour
 
     // Mouse class will take care of mouse positions
     public Mouse mouse;
+    
+    public GameObject tooltip;
 
     // Universal scale for a token
     public float tokenScale = 0.3f;
@@ -69,6 +73,16 @@ public class ProgramManager : MonoBehaviour
         transitionCounter += transitions.Count;
         
         history = new Stack<Command>();
+    }
+
+    private void Update()
+    {
+        states.Sort(delegate(State A, State B)
+        {
+            Vector2 topLeft = new Vector2(-1000, 550);
+            return Vector2.Distance(A.transform.position, topLeft)
+                .CompareTo(Vector2.Distance(B.transform.position, topLeft));
+        });
     }
 
     public Destination Find(string identifier)

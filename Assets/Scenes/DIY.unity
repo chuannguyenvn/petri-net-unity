@@ -558,6 +558,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1482991432160569817, guid: 9b40ef1074abf544082ed0c696d426c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2005854591}
+    - target: {fileID: 1482991432160569817, guid: 9b40ef1074abf544082ed0c696d426c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetSceneMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 1482991432160569823, guid: 9b40ef1074abf544082ed0c696d426c2, type: 3}
       propertyPath: m_Name
       value: Back to Menu

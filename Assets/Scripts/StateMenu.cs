@@ -58,7 +58,7 @@ public class StateMenu : Menu
         StartCoroutine(MoveUIObject_CO(newArc, Vector2.left * 100, false));
         StartCoroutine(MoveUIObject_CO(remove, Vector2.right * 100, false));
         StartCoroutine(MoveUIObject_CO(currentState.inputField.gameObject,
-            Vector2.one.normalized * -100, false));
+            Vector2.one.normalized * -100 + Vector2.up * 10, false));
         StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject,
             Vector2.one.normalized * 70, false));
     }

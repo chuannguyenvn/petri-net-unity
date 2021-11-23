@@ -121,7 +121,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 94, y: 94}
+  m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
 --- !u!1 &8654760059850242517
 GameObject:
@@ -207,7 +207,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 252457397390725725, guid: 5d66485dea5d5a64f9b63d2904c61e51, type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4287145413886628582, guid: 5d66485dea5d5a64f9b63d2904c61e51, type: 3}
       propertyPath: m_Pivot.x

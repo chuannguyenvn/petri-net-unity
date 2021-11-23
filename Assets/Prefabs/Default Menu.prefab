@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2987702579970850534, guid: 60eba4857ced5184f8e6517607b6bf11, type: 3}
+  m_Sprite: {fileID: 4274974089157873398, guid: 77dcf5d2b04ae3b4b8edbc01a99fe674, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 4738245964457294249}
   - component: {fileID: 4738245964457294262}
   - component: {fileID: 4738245964457294263}
+  - component: {fileID: 5726476889981173940}
   m_Layer: 5
   m_Name: New Transition
   m_TagString: Untagged
@@ -317,7 +318,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3517969840409267765, guid: 60eba4857ced5184f8e6517607b6bf11, type: 3}
+  m_Sprite: {fileID: -676141735018302565, guid: 77dcf5d2b04ae3b4b8edbc01a99fe674, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -383,6 +384,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5726476889981173940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4738245964457294261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68947f27a602ce54b9d1a6ae6e1dbc91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Construct a new transition
 --- !u!1 &4738245965539455904
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +409,7 @@ GameObject:
   - component: {fileID: 4738245965539455908}
   - component: {fileID: 4738245965539455909}
   - component: {fileID: 4738245965539455906}
+  - component: {fileID: 2381705645450436548}
   m_Layer: 5
   m_Name: New State
   m_TagString: Untagged
@@ -450,7 +465,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3097441241726891266, guid: 60eba4857ced5184f8e6517607b6bf11, type: 3}
+  m_Sprite: {fileID: 7268550465427991229, guid: 77dcf5d2b04ae3b4b8edbc01a99fe674, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -516,3 +531,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2381705645450436548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4738245965539455904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68947f27a602ce54b9d1a6ae6e1dbc91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Construct a new state

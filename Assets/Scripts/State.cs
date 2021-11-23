@@ -14,8 +14,11 @@ public class State : Destination
         base.Start();
         
         // Getting a menu for the state
-        menu = ProgramManager.Instance.NewStateMenu();
-        ((StateMenu)menu).currentState = this;
+        if (!ProgramManager.Instance.isDisplaying)
+        {
+            menu = ProgramManager.Instance.NewStateMenu();
+            ((StateMenu)menu).currentState = this;
+        }
     }
 
     void Update()
@@ -95,6 +98,12 @@ public class State : Destination
         Token toBeDeleted = tokens[tokens.Count - 1];
         tokens.RemoveAt(tokens.Count - 1);
         toBeDeleted.Destroy();
+    }
+
+    public void ForceSetTokenCount(int count)
+    {
+        while (tokens.Count > count) ForceRemoveToken();
+        if (tokens.Count < count) ForceAddToken(count - tokens.Count);
     }
     
     public override void OnDrag(PointerEventData eventData)

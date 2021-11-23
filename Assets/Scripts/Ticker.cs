@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Ticker : MonoBehaviour
 {
@@ -11,28 +12,41 @@ public class Ticker : MonoBehaviour
     [SerializeField] public float tickPeriod = 1f;
     [SerializeField] private float currentTick = 1f;
 
-    private bool isTicking = false;
+
+    [SerializeField] bool isTicking = false;
+    [SerializeField] private Transform pauseBackground;
+    [SerializeField] private Transform pauseFace;
+    private Image image;
 
     void Start()
     {
+        image = GetComponent<Image>();
     }
 
     void Update()
     {
-        if (isTicking)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, Time.time * 100);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-
         currentTick -= Time.deltaTime;
         if (currentTick <= 0f && isTicking)
         {
             OnTick.Invoke();
             currentTick = tickPeriod;
+        }
+
+        if (ProgramManager.Instance.isDisplaying) return;
+        
+        if (isTicking)
+        {
+            pauseFace.gameObject.SetActive(true);
+            pauseBackground.gameObject.SetActive(true);
+            image.enabled = false;
+            pauseBackground.rotation = Quaternion.Euler(0, 0, Time.time * 300);
+        }
+        else
+        {
+            pauseFace.gameObject.SetActive(false);
+            pauseBackground.gameObject.SetActive(false);
+            image.enabled = true;
+            pauseBackground.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 

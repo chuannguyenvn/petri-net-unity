@@ -12,14 +12,18 @@ public class Transition : Destination
     private bool isDragging = false;
 
     public Queue<FireCommand> fireCommands;
+
     public override void Start()
     {
         base.Start();
-        
+
         // Getting a menu for the state
-        menu = ProgramManager.Instance.NewTransitionMenu();
-        ((TransitionMenu)menu).currentTransition = this;
-        
+        if (!ProgramManager.Instance.isDisplaying)
+        {
+            menu = ProgramManager.Instance.NewTransitionMenu();
+            ((TransitionMenu)menu).currentTransition = this;
+        }
+
         ProgramManager.Instance.ticker.OnTick.AddListener(Fire);
 
         fireCommands = new Queue<FireCommand>();
@@ -40,6 +44,7 @@ public class Transition : Destination
             fireCommands.Peek().firingTokens.Add(newToken.GetComponent<Token>());
             Debug.Log(fireCommands.Peek().firingTokens.Count);
         }
+
         fireCommands.Dequeue();
 
         // And destroy all old tokens
@@ -56,7 +61,7 @@ public class Transition : Destination
     {
         // In case the transition is not fully implemented yet
         if (outDestinations.Count == 0) return;
-        
+
         // Check if any inState doesn't have at least 1 token
         foreach (State inState in inDestinations)
         {
@@ -73,7 +78,7 @@ public class Transition : Destination
     public override void OnPointerUp(PointerEventData eventData)
     {
         base.OnPointerUp(eventData);
-        
+
         // Some conditions to prevent unwanted interactions
         if (isDragging || eventData.button == PointerEventData.InputButton.Right ||
             mouse.currentArc != null) return;

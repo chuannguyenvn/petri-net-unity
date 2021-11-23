@@ -193,7 +193,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 47
+  m_Radius: 50
 --- !u!1 &7929466000417445696
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +278,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 252457397390725725, guid: 5d66485dea5d5a64f9b63d2904c61e51, type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4287145413886628582, guid: 5d66485dea5d5a64f9b63d2904c61e51, type: 3}
       propertyPath: m_Pivot.x

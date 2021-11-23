@@ -38,7 +38,7 @@ public class Destination : MonoBehaviour, IPointerClickHandler, IPointerUpHandle
 
         // Generate a unique identifier for the transition
         string randomStr = ProgramManager.Instance.RandomString(transform.position.magnitude);
-        identifier = inputField.text + randomStr;
+        identifier = inputField.text.Replace('~', ' ') + "~" + randomStr;
 
         // Linking this state with the outDestinations by using arcs
         foreach (Destination destination in outDestinations)
@@ -110,6 +110,6 @@ public class Destination : MonoBehaviour, IPointerClickHandler, IPointerUpHandle
             if (index != -1) destination.inDestinations.RemoveAt(index);
         }
 
-        Destroy(menu.gameObject);
+        if (menu != null) Destroy(menu.gameObject);
     }
 }

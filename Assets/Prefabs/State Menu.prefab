@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 8191002527133330061}
   - component: {fileID: 8191002527133330098}
   - component: {fileID: 8191002527133330099}
+  - component: {fileID: 3175593253932060928}
   m_Layer: 5
   m_Name: New Arc
   m_TagString: Untagged
@@ -225,7 +226,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4660517506855646298, guid: 60eba4857ced5184f8e6517607b6bf11, type: 3}
+  m_Sprite: {fileID: 7127855402980982914, guid: 77dcf5d2b04ae3b4b8edbc01a99fe674, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -291,6 +292,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3175593253932060928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191002527133330097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68947f27a602ce54b9d1a6ae6e1dbc91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Construct a new arc
 --- !u!1 &8191002527862743083
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +317,7 @@ GameObject:
   - component: {fileID: 8191002527862743079}
   - component: {fileID: 8191002527862743076}
   - component: {fileID: 8191002527862743077}
+  - component: {fileID: 4668614431734777014}
   m_Layer: 5
   m_Name: Remove Token
   m_TagString: Untagged
@@ -358,7 +373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3446060694451247577, guid: 60eba4857ced5184f8e6517607b6bf11, type: 3}
+  m_Sprite: {fileID: 8719987563667484182, guid: 77dcf5d2b04ae3b4b8edbc01a99fe674, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -424,6 +439,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4668614431734777014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191002527862743083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68947f27a602ce54b9d1a6ae6e1dbc91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Remove a token
 --- !u!1 &8191002527985589494
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +464,7 @@ GameObject:
   - component: {fileID: 8191002527985589490}
   - component: {fileID: 8191002527985589491}
   - component: {fileID: 8191002527985589488}
+  - component: {fileID: 5694742459256917615}
   m_Layer: 5
   m_Name: Remove
   m_TagString: Untagged
@@ -491,7 +520,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4485694901496556213, guid: 60eba4857ced5184f8e6517607b6bf11, type: 3}
+  m_Sprite: {fileID: -4513516256556523183, guid: 77dcf5d2b04ae3b4b8edbc01a99fe674, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -557,6 +586,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5694742459256917615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191002527985589494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68947f27a602ce54b9d1a6ae6e1dbc91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Remove this state
 --- !u!1 &8191002528168242652
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +690,7 @@ GameObject:
   - component: {fileID: 8191002528351999591}
   - component: {fileID: 8191002528351999588}
   - component: {fileID: 8191002528351999589}
+  - component: {fileID: 5609762291820986670}
   m_Layer: 5
   m_Name: Add Token
   m_TagString: Untagged
@@ -703,7 +746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2778097849758409987, guid: 60eba4857ced5184f8e6517607b6bf11, type: 3}
+  m_Sprite: {fileID: -2214303303230341658, guid: 77dcf5d2b04ae3b4b8edbc01a99fe674, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -769,6 +812,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5609762291820986670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191002528351999595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68947f27a602ce54b9d1a6ae6e1dbc91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Add a new token
 --- !u!1 &8191002528633853834
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,7 +46,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
-    filterMode: 0
+    filterMode: 2
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -91,28 +91,6 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Default Menu
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 730
-      y: 4
-      width: 393
-      height: 393
-    spriteID: 5ab59c3c6219d4f45989a69371b17b49
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -770, y: -1858}
   - name: New Transition
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -120,8 +98,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1131
-      y: 4
+      x: 4
+      y: 405
       width: 393
       height: 393
     spriteID: 21ec5a31083dbdf43adb438ec5dfca4c
@@ -134,7 +112,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 1104, y: -1415}
+    uvTransform: {x: -23, y: -1014}
   - name: New State
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -142,8 +120,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1532
-      y: 4
+      x: 4
+      y: 806
       width: 393
       height: 393
     spriteID: 9bb511af9a21b674eb60052fc41bb8ca
@@ -156,7 +134,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 1505, y: -1881}
+    uvTransform: {x: -23, y: -1079}
   - name: Remove Token
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -165,7 +143,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 411
+      y: 1207
       width: 393
       height: 393
     spriteID: 5084592b59899784aa252ff03c11b79b
@@ -178,7 +156,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -496, y: -1010}
+    uvTransform: {x: -496, y: -214}
   - name: Add Token
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -186,8 +164,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 405
-      y: 411
+      x: 4
+      y: 1608
       width: 393
       height: 393
     spriteID: 7b32b0e48a45fca47838da4297d0f23a
@@ -200,51 +178,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -95, y: -1465}
-  - name: Reload
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 806
-      y: 411
-      width: 393
-      height: 393
-    spriteID: 046e8da0e1534d741bf2dee512f70e45
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 779, y: -542}
-  - name: Cut
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1207
-      y: 411
-      width: 393
-      height: 393
-    spriteID: 41e8f2223a6884a4e8d2ae98891e107d
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -76, y: 181}
+    uvTransform: {x: -496, y: -268}
   - name: Menu
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -252,8 +186,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1608
-      y: 411
+      x: 405
+      y: 4
       width: 393
       height: 393
     spriteID: a6b493693deb8384eaece967c6934bad
@@ -266,52 +200,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 599, y: -542}
-  - name: Pause
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 812
-      width: 393
-      height: 393
-    spriteID: 341f3aa045febbe46a54380e94b5f134
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -562, y: 488}
-  - name: Auto Fire
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 405
-      y: 812
-      width: 393
-      height: 393
-    spriteID: 057cdb8489846c84dbddd164240ce333
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 405, y: 566}
-  - name: Remove (Trash Can)
+    uvTransform: {x: -569, y: -926}
+  - name: Remove All
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -319,7 +209,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 806
-      y: 812
+      y: 4
       width: 393
       height: 393
     spriteID: 104f0109ade4bac478a53b661b2673f3
@@ -332,29 +222,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 308, y: -141}
-  - name: Remove
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 1207
-      y: 812
-      width: 393
-      height: 393
-    spriteID: c0d8855d45fcbc4459bb0d8f8eaeba3c
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -293, y: -604}
+    uvTransform: {x: 288, y: -932}
   - name: Remove Arc
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -362,8 +230,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1608
-      y: 812
+      x: 806
+      y: 806
       width: 393
       height: 393
     spriteID: 57ce8ddd0070fc74b97d0fab9d4fe24a
@@ -376,7 +244,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 599, y: -621}
+    uvTransform: {x: -203, y: -627}
   - name: New Arc
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -384,8 +252,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 1213
+      x: 806
+      y: 1207
       width: 393
       height: 393
     spriteID: 16db43034df33364d85de9a3227b6c8b
@@ -398,8 +266,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -970, y: -663}
-  - name: Arrow Head
+    uvTransform: {x: -168, y: -669}
+  - name: Default Menu
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -408,9 +276,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 718
-      height: 399
-    spriteID: e8455e154a316ef4aa11deeda688fca4
+      width: 394
+      height: 394
+    spriteID: b5e5316bd09e31544be9747c09d9a9aa
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -420,14 +288,190 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -1279, y: -816}
+    uvTransform: {x: -1496, y: -1858}
+  - name: Reload
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 405
+      y: 405
+      width: 393
+      height: 393
+    spriteID: 3f3175cbf0bba4140b10a1448fd8af28
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -569, y: -28}
+  - name: Pause (Face)
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1096
+      y: 1608
+      width: 98
+      height: 164
+    spriteID: 960518950f97d8442899209b7a57b3ea
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 430, y: 1024}
+  - name: Loading
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 405
+      y: 806
+      width: 393
+      height: 393
+    spriteID: 9aedc30e0ca807b4cad8d60cfee5d682
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -1095, y: -204}
+  - name: Auto Fire
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 405
+      y: 1207
+      width: 393
+      height: 393
+    spriteID: 468bd3d3db8aad648b48c602ac25195f
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 378, y: 737}
+  - name: Undo
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 405
+      y: 1608
+      width: 393
+      height: 393
+    spriteID: 1aa37918ff7e2ef4d83f7fb1b7b749c1
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 378, y: 672}
+  - name: Remove
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 806
+      y: 405
+      width: 393
+      height: 393
+    spriteID: 26b9d438f56173b4a892d404e40b4c6d
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -694, y: -1011}
+  - name: Reachable Markings
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 806
+      y: 1608
+      width: 282
+      height: 282
+    spriteID: 4aad04f958af3e64f8f718357ca1325c
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -750, y: 543}
+  - name: Arrow Head
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 806
+      y: 1898
+      width: 145
+      height: 128
+    spriteID: 091bc6e3b982fb247ad500afdf16b943
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -746, y: 1314}
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
-    maxTextureSize: 4096
+    maxTextureSize: 16384
     resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
     crunchedCompression: 0
@@ -435,10 +479,10 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   - name: Standalone
     overridden: 0
-    maxTextureSize: 4096
+    maxTextureSize: 16384
     resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
     crunchedCompression: 0
@@ -446,10 +490,10 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   - name: iPhone
     overridden: 0
-    maxTextureSize: 4096
+    maxTextureSize: 16384
     resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
     crunchedCompression: 0
@@ -457,10 +501,10 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   - name: WebGL
     overridden: 0
-    maxTextureSize: 4096
+    maxTextureSize: 16384
     resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
     crunchedCompression: 0
@@ -468,10 +512,10 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   - name: Windows Store Apps
     overridden: 0
-    maxTextureSize: 4096
+    maxTextureSize: 16384
     resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
     crunchedCompression: 0
@@ -479,10 +523,10 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   - name: Android
     overridden: 0
-    maxTextureSize: 4096
+    maxTextureSize: 16384
     resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
     crunchedCompression: 0
@@ -517,9 +561,9 @@ ScriptedImporter:
     spriteName: Default Menu
     isGroup: 0
     parentIndex: 0
-    spriteID: 5ab59c3c6219d4f45989a69371b17b49
-    layerID: 6
-    mosaicPosition: {x: 730, y: 4}
+    spriteID: b5e5316bd09e31544be9747c09d9a9aa
+    layerID: 123
+    mosaicPosition: {x: 4, y: 4}
   - name: New Transition
     spriteName: 
     isGroup: 1
@@ -533,7 +577,7 @@ ScriptedImporter:
     parentIndex: 2
     spriteID: 21ec5a31083dbdf43adb438ec5dfca4c
     layerID: 50
-    mosaicPosition: {x: 1131, y: 4}
+    mosaicPosition: {x: 4, y: 405}
   - name: New State
     spriteName: 
     isGroup: 1
@@ -547,7 +591,7 @@ ScriptedImporter:
     parentIndex: 4
     spriteID: 9bb511af9a21b674eb60052fc41bb8ca
     layerID: 39
-    mosaicPosition: {x: 1532, y: 4}
+    mosaicPosition: {x: 4, y: 806}
   - name: Remove Token
     spriteName: 
     isGroup: 1
@@ -561,7 +605,7 @@ ScriptedImporter:
     parentIndex: 6
     spriteID: 5084592b59899784aa252ff03c11b79b
     layerID: 56
-    mosaicPosition: {x: 4, y: 411}
+    mosaicPosition: {x: 4, y: 1207}
   - name: Add Token
     spriteName: 
     isGroup: 1
@@ -575,7 +619,7 @@ ScriptedImporter:
     parentIndex: 8
     spriteID: 7b32b0e48a45fca47838da4297d0f23a
     layerID: 17
-    mosaicPosition: {x: 405, y: 411}
+    mosaicPosition: {x: 4, y: 1608}
   - name: Remove
     spriteName: 
     isGroup: 1
@@ -583,55 +627,69 @@ ScriptedImporter:
     spriteID: 00000000000000000000000000000000
     layerID: 20
     mosaicPosition: {x: 0, y: 0}
-  - name: Reload
-    spriteName: Reload
-    isGroup: 0
-    parentIndex: 10
-    spriteID: 046e8da0e1534d741bf2dee512f70e45
-    layerID: 82
-    mosaicPosition: {x: 806, y: 411}
-  - name: Cut
-    spriteName: Cut
-    isGroup: 0
-    parentIndex: 10
-    spriteID: 41e8f2223a6884a4e8d2ae98891e107d
-    layerID: 96
-    mosaicPosition: {x: 1207, y: 411}
   - name: Menu
     spriteName: Menu
     isGroup: 0
     parentIndex: 10
     spriteID: a6b493693deb8384eaece967c6934bad
     layerID: 94
-    mosaicPosition: {x: 1608, y: 411}
-  - name: Pause
-    spriteName: Pause
+    mosaicPosition: {x: 405, y: 4}
+  - name: Reload
+    spriteName: Reload
     isGroup: 0
     parentIndex: 10
-    spriteID: 341f3aa045febbe46a54380e94b5f134
-    layerID: 91
-    mosaicPosition: {x: 4, y: 812}
+    spriteID: 3f3175cbf0bba4140b10a1448fd8af28
+    layerID: 100
+    mosaicPosition: {x: 405, y: 405}
+  - name: Pause (Face)
+    spriteName: Pause (Face)
+    isGroup: 0
+    parentIndex: 10
+    spriteID: 960518950f97d8442899209b7a57b3ea
+    layerID: 115
+    mosaicPosition: {x: 1096, y: 1608}
+  - name: Reachable Markings
+    spriteName: Reachable Markings
+    isGroup: 0
+    parentIndex: 10
+    spriteID: 4aad04f958af3e64f8f718357ca1325c
+    layerID: 128
+    mosaicPosition: {x: 806, y: 1608}
+  - name: Loading
+    spriteName: Loading
+    isGroup: 0
+    parentIndex: 10
+    spriteID: 9aedc30e0ca807b4cad8d60cfee5d682
+    layerID: 108
+    mosaicPosition: {x: 405, y: 806}
   - name: Auto Fire
     spriteName: Auto Fire
     isGroup: 0
     parentIndex: 10
-    spriteID: 057cdb8489846c84dbddd164240ce333
-    layerID: 87
-    mosaicPosition: {x: 405, y: 812}
-  - name: Remove (Trash Can)
-    spriteName: Remove (Trash Can)
+    spriteID: 468bd3d3db8aad648b48c602ac25195f
+    layerID: 105
+    mosaicPosition: {x: 405, y: 1207}
+  - name: Undo
+    spriteName: Undo
+    isGroup: 0
+    parentIndex: 10
+    spriteID: 1aa37918ff7e2ef4d83f7fb1b7b749c1
+    layerID: 98
+    mosaicPosition: {x: 405, y: 1608}
+  - name: Remove All
+    spriteName: Remove All
     isGroup: 0
     parentIndex: 10
     spriteID: 104f0109ade4bac478a53b661b2673f3
     layerID: 7
-    mosaicPosition: {x: 806, y: 812}
+    mosaicPosition: {x: 806, y: 4}
   - name: Remove
     spriteName: Remove
     isGroup: 0
     parentIndex: 10
-    spriteID: c0d8855d45fcbc4459bb0d8f8eaeba3c
-    layerID: 14
-    mosaicPosition: {x: 1207, y: 812}
+    spriteID: 26b9d438f56173b4a892d404e40b4c6d
+    layerID: 127
+    mosaicPosition: {x: 806, y: 405}
   - name: Remove Arc
     spriteName: 
     isGroup: 1
@@ -642,10 +700,10 @@ ScriptedImporter:
   - name: Remove Arc
     spriteName: Remove Arc
     isGroup: 0
-    parentIndex: 18
+    parentIndex: 20
     spriteID: 57ce8ddd0070fc74b97d0fab9d4fe24a
     layerID: 73
-    mosaicPosition: {x: 1608, y: 812}
+    mosaicPosition: {x: 806, y: 806}
   - name: New Arc
     spriteName: 
     isGroup: 1
@@ -656,17 +714,17 @@ ScriptedImporter:
   - name: New Arc
     spriteName: New Arc
     isGroup: 0
-    parentIndex: 20
+    parentIndex: 22
     spriteID: 16db43034df33364d85de9a3227b6c8b
     layerID: 66
-    mosaicPosition: {x: 4, y: 1213}
+    mosaicPosition: {x: 806, y: 1207}
   - name: Arrow Head
     spriteName: Arrow Head
     isGroup: 0
     parentIndex: -1
-    spriteID: e8455e154a316ef4aa11deeda688fca4
-    layerID: 74
-    mosaicPosition: {x: 4, y: 4}
+    spriteID: 091bc6e3b982fb247ad500afdf16b943
+    layerID: 130
+    mosaicPosition: {x: 806, y: 1898}
   characterData:
     bones: []
     parts: []
