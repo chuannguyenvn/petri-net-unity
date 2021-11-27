@@ -3,16 +3,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+// The states inside a Petri net //
 public class State : Destination
 {
-    /// The states inside a Petri net ///
-
     public Text tokenCount;
 
     public override void Start()
     {
         base.Start();
-        
+
         // Getting a menu for the state
         if (!ProgramManager.Instance.isDisplaying)
         {
@@ -38,9 +37,10 @@ public class State : Destination
         float tokenScale = ProgramManager.Instance.tokenScale;
         for (int i = 0; i < tokens.Count; i++)
         {
-            if (tokens.Count > 4 && tokens.Count < 12)
+            if (tokens.Count > 3 && tokens.Count < 12)
             {
-                tokens[i].transform.localScale = Vector3.one * tokenScale * (20f - tokens.Count) / 20;
+                tokens[i].transform.localScale =
+                    Vector3.one * tokenScale * (20f - tokens.Count) / 20;
                 tokens[i].transform.localPosition =
                     Quaternion.Euler(0, 0, (float)i / tokens.Count * 360 + Time.time * 60) *
                     Vector3.up * 24;
@@ -58,7 +58,7 @@ public class State : Destination
                 {
                     tokens[i].transform.localPosition =
                         Quaternion.Euler(0, 0,
-                            (i * 2 / 3) / (tokens.Count * 2f / 3) * 360 + Time.time * 30) *
+                            (i * 2f / 3) / (tokens.Count * 2f / 3) * 360 + Time.time * 30) *
                         Vector3.up * 30;
                 }
             }
@@ -80,19 +80,19 @@ public class State : Destination
         tokens.RemoveAt(tokens.Count - 1);
     }
 
+    // Force methods are methods that ignore any animation and perform operations immediately
     public void ForceAddToken(int count = 1)
     {
         for (int i = 0; i < count; i++)
         {
             Token newToken = ProgramManager.Instance.NewToken();
             newToken.transform.position = transform.position;
-            newToken.prevPos = newToken.transform.position;
             newToken.destination = this;
             newToken.transform.SetParent(transform);
             tokens.Add(newToken);
         }
     }
-    
+
     public void ForceRemoveToken()
     {
         if (tokens.Count == 0) return;
@@ -106,7 +106,7 @@ public class State : Destination
         while (tokens.Count > count) ForceRemoveToken();
         if (tokens.Count < count) ForceAddToken(count - tokens.Count);
     }
-    
+
     public override void OnDrag(PointerEventData eventData)
     {
         base.OnDrag(eventData);
@@ -114,18 +114,18 @@ public class State : Destination
     }
 
     public override void OnPointerClick(PointerEventData eventData)
-    {        
+    {
         base.OnPointerClick(eventData);
         transform.SetSiblingIndex(transform.parent.childCount - 1);
-        
+
         // If the mouse is holding an arc
         if (mouse.currentArc != null)
         {
             // Try and get the transition that the arc is pointing from
             Transition arcOrigin = mouse.currentArc.origin.GetComponent<Transition>();
-            
+
             // If can't find the transition from the arc or the transition is duplicated
-            if (arcOrigin == null || 
+            if (arcOrigin == null ||
                 inDestinations.Find(x => x.identifier == arcOrigin.identifier) ||
                 outDestinations.Find(x => x.identifier == arcOrigin.identifier))
             {

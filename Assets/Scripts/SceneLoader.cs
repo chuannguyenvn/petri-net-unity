@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// Simple class used to trigger button events to load scenes ///
+// Simple class used to trigger button events to load scenes //
 public class SceneLoader : MonoBehaviour
 {
     public void GetSceneItem1()
@@ -37,5 +37,10 @@ public class SceneLoader : MonoBehaviour
     public void GetSceneMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void GetSceneItem1b()
+    {
+        SceneManager.LoadScene(7);
     }
 }

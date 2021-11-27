@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
+// Base class for State and Transition //
 public class Destination : MonoBehaviour, IPointerClickHandler, IPointerUpHandler,
     IBeginDragHandler,
     IEndDragHandler,
@@ -53,14 +53,14 @@ public class Destination : MonoBehaviour, IPointerClickHandler, IPointerUpHandle
         StartCoroutine(Spawn_CO());
     }
 
+    // Coroutine to animate the spawning process
     IEnumerator Spawn_CO()
     {
         float spawnTime = 0.3f;
-        float coeff = 0.05f;
         while (spawnTime > 0)
         {
-            transform.localScale =
-                Vector3.one * (1 + Mathf.Sin(spawnTime * 30) * coeff * spawnTime / 0.5f);
+            transform.localScale = Vector3.one * 
+                                   (1 + Mathf.Sin(spawnTime * 30) * 0.05f * spawnTime / 0.5f);
             spawnTime -= Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
@@ -68,8 +68,8 @@ public class Destination : MonoBehaviour, IPointerClickHandler, IPointerUpHandle
         transform.localScale = Vector3.one;
     }
 
+    // Various methods for handling mouse events
     #region EventFunctions
-
     public virtual void OnPointerClick(PointerEventData eventData)
     {
     }
@@ -95,7 +95,6 @@ public class Destination : MonoBehaviour, IPointerClickHandler, IPointerUpHandle
         if (eventData.button != PointerEventData.InputButton.Left) return;
         background.onDeselectClick.Invoke();
     }
-
     #endregion
 
     // When being destroyed, properly remove all relationships
@@ -114,5 +113,11 @@ public class Destination : MonoBehaviour, IPointerClickHandler, IPointerUpHandle
         }
 
         if (menu != null) Destroy(menu.gameObject);
+    }
+
+    // When disabled, disable the menu as well
+    private void OnDisable()
+    {
+        menu.enabled = false;
     }
 }

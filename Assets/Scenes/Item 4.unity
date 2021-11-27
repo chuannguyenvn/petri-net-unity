@@ -582,7 +582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7779460125196590157, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -346.8863
+      value: -317.8863
       objectReference: {fileID: 0}
     - target: {fileID: 7779460125196590157, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1041,7 +1041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465023860005804198, guid: 68ec1975a07b8854bac617550f35f98b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -46.886295
+      value: -17.886295
       objectReference: {fileID: 0}
     - target: {fileID: 7465023860005804198, guid: 68ec1975a07b8854bac617550f35f98b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1304,7 +1304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7779460125196590157, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 253.11371
+      value: 282.1137
       objectReference: {fileID: 0}
     - target: {fileID: 7779460125196590157, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1728,7 +1728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465023860005804198, guid: 68ec1975a07b8854bac617550f35f98b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -46.886295
+      value: -17.886295
       objectReference: {fileID: 0}
     - target: {fileID: 7465023860005804198, guid: 68ec1975a07b8854bac617550f35f98b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1865,7 +1865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7779460125196590157, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -346.8863
+      value: -317.8863
       objectReference: {fileID: 0}
     - target: {fileID: 7779460125196590157, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2435,7 +2435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7465023860005804198, guid: 68ec1975a07b8854bac617550f35f98b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 253.11371
+      value: 282.1137
       objectReference: {fileID: 0}
     - target: {fileID: 7465023860005804198, guid: 68ec1975a07b8854bac617550f35f98b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2578,7 +2578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7779460125196590157, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -346.8863
+      value: -317.8863
       objectReference: {fileID: 0}
     - target: {fileID: 7779460125196590157, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2734,7 +2734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7779460125196590157, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 253.11377
+      value: 282.11377
       objectReference: {fileID: 0}
     - target: {fileID: 7779460125196590157, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2888,10 +2888,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter the index of a marking to check it out...
+  m_text: Enter the index of a marking to investigate it...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48f2f62d9d7a03f408cc4d6d7742cc10, type: 2}
+  m_sharedMaterial: {fileID: 3183001976187428704, guid: 48f2f62d9d7a03f408cc4d6d7742cc10, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2923,7 +2923,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 2
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3198,7 +3198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7779460125196590157, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -46.886295
+      value: -17.886295
       objectReference: {fileID: 0}
     - target: {fileID: 7779460125196590157, guid: 4cc09a9737593b44da1bbff10061121d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
+// Class for handling background-clickings //
 public class Background : MonoBehaviour, IPointerClickHandler
 {
     public UnityEvent onDeselectClick; // Fire when the user clicking the background
@@ -27,7 +28,6 @@ public class Background : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             onDeselectClick.Invoke();
-            //defaultMenu.ForceHide();
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {

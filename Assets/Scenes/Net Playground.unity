@@ -821,6 +821,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2005854591}
+    - target: {fileID: 6585414424280482071, guid: 07195795a0a2d77479643c33382d405e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetSceneNetPlayground
+      objectReference: {fileID: 0}
     - target: {fileID: 6585414424280482072, guid: 07195795a0a2d77479643c33382d405e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

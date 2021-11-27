@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// The default menu when right-clicking the background ///
+// The default menu when right-clicking the background //
 public class DefaultMenu : Menu // Menu provides base methods 
 {
     [SerializeField] private GameObject newState; // On the left
@@ -35,6 +35,8 @@ public class DefaultMenu : Menu // Menu provides base methods
     // Hide the menu, with animations
     public override void Hide()
     {
+        StopAllCoroutines();
+
         StartCoroutine(MoveUIObject_CO(newState, Vector2.zero, true));
         StartCoroutine(MoveUIObject_CO(newTransition, Vector2.zero, true));
     }
@@ -43,6 +45,7 @@ public class DefaultMenu : Menu // Menu provides base methods
     public override void ForceHide()
     {
         StopAllCoroutines();
+
         newState.transform.position = Vector2.zero;
         newTransition.transform.position = Vector2.zero;
     }

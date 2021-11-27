@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Sub class used to make an arc //
 public class NewArcCommand : Command
 {
-    public Destination origin; // Holds the transform of the "tail" of the arc
+    public Destination origin; 
     public Destination target;
-
     public Arc arc;
+
     public NewArcCommand(Destination origin, Destination target, Arc arc)
     {
         this.origin = origin;
         this.target = target;
         this.arc = arc;
     }
-    
+
+    // Execute: Establish the connection between 2 states/transitions appropriately
+    //          then configure the arc
     public override void Execute()
     {
         if (origin.GetType() == typeof(Transition))
@@ -31,6 +34,7 @@ public class NewArcCommand : Command
         arc.target = target.transform;
     }
 
+    // Undo: Remove the established connection and the arc's target. The arc will destroy itself
     public override void Unexecute()
     {
         if (origin.GetType() == typeof(Transition))

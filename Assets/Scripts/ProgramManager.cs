@@ -12,7 +12,7 @@ public class ProgramManager : MonoBehaviour
     public static ProgramManager Instance;
 
     public bool isDisplaying = false;
-    
+
     // Several prefabs for instantiating
     public GameObject statePrefab;
     public GameObject transitionPrefab;
@@ -26,28 +26,31 @@ public class ProgramManager : MonoBehaviour
 
     // The ticker. Used for auto-firing
     public Ticker ticker;
-    
+
     // This scene's canvas
     public Canvas canvas;
 
     // Mouse class will take care of mouse positions
     public Mouse mouse;
-    
+
     public GameObject tooltip;
 
     // Universal scale for a token
     public float tokenScale = 0.3f;
 
+    // Currently exiting states and transition
+    public List<State> states;
+    public List<Transition> transitions;
+    
     // State and transition counters, with properties
     private int stateCounter = -1;
     private int transitionCounter = -1;
     public int StateCounter => ++stateCounter;
     public int TransitionCounter => ++transitionCounter;
 
-    public List<State> states;
-    public List<Transition> transitions;
+    // For undo mechanism
     public Stack<Command> history;
-    
+
     private void Awake()
     {
         Instance = this; // Singleton
@@ -62,39 +65,28 @@ public class ProgramManager : MonoBehaviour
         {
             states.Add(state);
         }
-        
+
         foreach (Transition transition in FindObjectsOfType<Transition>())
         {
             transitions.Add(transition);
         }
-        
+
         // Set the counters by counting all states and transitions in scene
         stateCounter += states.Count;
         transitionCounter += transitions.Count;
-        
+
         history = new Stack<Command>();
     }
 
     private void Update()
     {
+        // Always sort the state based on distance for easy reading
         states.Sort(delegate(State A, State B)
         {
             Vector2 topLeft = new Vector2(-1000, 550);
             return Vector2.Distance(A.transform.position, topLeft)
                 .CompareTo(Vector2.Distance(B.transform.position, topLeft));
         });
-    }
-
-    public Destination Find(string identifier)
-    {
-        int index = states.FindIndex(x => x.identifier == identifier);
-        if (index != -1) return states[index];
-        
-        index = transitions.FindIndex(x => x.identifier == identifier);
-        if (index != -1) return transitions[index];
-
-        Debug.LogError("Destination doesn't exist.");
-        return null;
     }
     
     #region InstantiateMethods
@@ -133,8 +125,9 @@ public class ProgramManager : MonoBehaviour
     {
         return Instantiate(transitionMenuPrefab, canvas.transform).GetComponent<TransitionMenu>();
     }
+
     #endregion
-    
+
     // Method for generating random string used in states and transitions' identifiers
     // The identifiers will be used to check each state/transition uniqueness
     public string RandomString(float seed)
@@ -145,6 +138,7 @@ public class ProgramManager : MonoBehaviour
         Random.InitState((int)(Time.time * 1000 + stateCounter * stateCounter +
                                transitionCounter * transitionCounter));
         result += chars[Random.Range(0, (int)seed) % chars.Length];
+        
         for (int i = 0; i < 5; i++)
         {
             result += chars[Random.Range(0, (int)seed + result[result.Length - 1]) % chars.Length];
@@ -153,6 +147,7 @@ public class ProgramManager : MonoBehaviour
         return result;
     }
 
+    // Method to invoke Unexecute methods
     public void Undo()
     {
         if (history.Count > 0)
@@ -160,6 +155,5 @@ public class ProgramManager : MonoBehaviour
             history.Peek().Unexecute();
             history.Pop();
         }
-        else Debug.Log("History is empty");
     }
 }

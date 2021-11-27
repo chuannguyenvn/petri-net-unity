@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 11473bacc6c6684478e51cf50f684518
   - enabled: 1
-    path: Assets/Scenes/Item 1.unity
+    path: Assets/Scenes/Item 1a.unity
     guid: 28c06aebe7bb91248ae83d0dd9c19198
   - enabled: 1
     path: Assets/Scenes/Item 2.unity
@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Reachable Markings Playground.unity
     guid: 5906f376704e58c449a9cc75c2afaa32
+  - enabled: 1
+    path: Assets/Scenes/Item 1b.unity
+    guid: 5516a8254c9f99143a10c08ea9f3e5c2
   m_configObjects: {}

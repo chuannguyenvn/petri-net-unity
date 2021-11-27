@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-/// Base class for the child menu classes ///
+// Base class for the menu sub classes //
 public abstract class Menu : MonoBehaviour
 {
     private Background background;
@@ -11,13 +11,13 @@ public abstract class Menu : MonoBehaviour
     void Start()
     {
         // Required to perform correctly at different screen size
-        speed *= Screen.width / 1920f; 
-        
+        speed *= Screen.width / 1920f;
+
         // Get the background, which has an event that invoked whenever user click on blank space
         background = ProgramManager.Instance.canvas.GetComponent<Background>();
         // Add the appropriate subscriber to that event
         background.onDeselectClick.AddListener(Hide);
-        
+
         // Initially move the menu to the back of the screen
         transform.SetSiblingIndex(0);
     }

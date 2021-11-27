@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-/// The transitions inside a Petri net ///
+// The transitions inside a Petri net //
 public class Transition : Destination
 {
     private bool isDragging = false;

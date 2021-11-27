@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+// Class used to slowly fade the hint //
 public class Hint : MonoBehaviour
 {
     private TextMeshProUGUI hintText;

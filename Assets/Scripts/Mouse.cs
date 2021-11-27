@@ -1,6 +1,6 @@
 using UnityEngine;
 
-/// Class that take care of all mouse operations. Work with Background ///
+// Class that take care of all mouse operations. Work with Background //
 public class Mouse : MonoBehaviour
 {
     public Arc currentArc;

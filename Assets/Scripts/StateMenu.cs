@@ -1,6 +1,6 @@
 using UnityEngine;
 
-/// The menu that pops out when the user right-click a state ///
+// The menu that pops out when the user right-click a state //
 public class StateMenu : Menu
 {
     [SerializeField] private GameObject addToken; // On the left
@@ -13,9 +13,6 @@ public class StateMenu : Menu
     // Add a new token to currentState
     public void AddToken()
     {
-        // currentState.addTokenCommands.Enqueue(new AddTokenCommand(currentState));
-        // currentState.addTokenCommands.Peek().Execute();
-
         new AddTokenCommand(currentState).Execute();
     }
 
@@ -23,9 +20,7 @@ public class StateMenu : Menu
     public void RemoveToken()
     {
         if (currentState.tokens.Count > 0)
-        {
             new RemoveTokenCommand(currentState).Execute();
-        }
     }
 
     // Construct an arc from this state
@@ -45,14 +40,13 @@ public class StateMenu : Menu
         StopAllCoroutines();
         new RemoveDestinationCommand(currentState).Execute();
         ForceHide();
-        //Destroy(gameObject);
     }
 
     // Show the menu, with appropriate selection positions and animations
     public override void Show(Vector2 position)
-    {
-        StopAllCoroutines();
+    {        
         isShowing = true;
+        StopAllCoroutines();
         transform.SetSiblingIndex(0);
 
         transform.position = position;
@@ -76,8 +70,7 @@ public class StateMenu : Menu
         StartCoroutine(MoveUIObject_CO(removeToken, Vector2.zero, true));
         StartCoroutine(MoveUIObject_CO(newArc, Vector2.zero, true));
         StartCoroutine(MoveUIObject_CO(remove, Vector2.zero, true));
-        StartCoroutine(MoveUIObject_CO(currentState.inputField.gameObject, Vector2.down * 70,
-            true));
+        StartCoroutine(MoveUIObject_CO(currentState.inputField.gameObject, Vector2.down * 70, true));
         StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject, Vector2.up * 70, true));
     }
 
@@ -85,14 +78,13 @@ public class StateMenu : Menu
     public override void ForceHide()
     {
         StopAllCoroutines();
-
         transform.SetSiblingIndex(0);
+        
         addToken.transform.position = Vector2.zero;
         removeToken.transform.position = Vector2.zero;
         newArc.transform.position = Vector2.zero;
         remove.transform.position = Vector2.zero;
-        StartCoroutine(MoveUIObject_CO(currentState.inputField.gameObject, Vector2.down * 70,
-            false));
+        StartCoroutine(MoveUIObject_CO(currentState.inputField.gameObject, Vector2.down * 70, false));
         StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject, Vector2.up * 70, false));
     }
 }

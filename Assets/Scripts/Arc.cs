@@ -1,6 +1,6 @@
 using UnityEngine;
 
-/// The arc linking states and transitions ///
+// The arc linking states and transitions //
 public class Arc : MonoBehaviour
 {
     public Transform origin; // Holds the transform of the "tail" of the arc
@@ -22,8 +22,10 @@ public class Arc : MonoBehaviour
         // Destroy the arc immediately if missing any point
         if (origin == null || target == null || origin.gameObject.activeSelf == false ||
             target.gameObject.activeSelf == false) Destroy(gameObject);
+        
         transform.SetSiblingIndex(0); // Arcs should always be behind other objects
-        if (origin == null || target == null) return;
+        
+       // if (origin == null || target == null) return;
 
         Vector2 pointA = origin.position * 1920 / Screen.width; // Position of the origin
         Vector2 pointB = target.position * 1920 / Screen.width; // Position of the target

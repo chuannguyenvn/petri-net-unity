@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/// The menu that pops out when the user right-click a transition ///
+// The menu that pops out when the user right-click a transition //
 public class TransitionMenu : Menu
 {
     [SerializeField] private GameObject remove; // On the right
@@ -31,9 +31,11 @@ public class TransitionMenu : Menu
 
     // Show the menu, with appropriate selection positions and animations
     public override void Show(Vector2 position)
-    {StopAllCoroutines();
+    {        
         isShowing = true;
+        StopAllCoroutines();
         transform.SetSiblingIndex(0);
+        
         transform.position = position;
         StartCoroutine(MoveUIObject_CO(remove, Vector2.right * 100, false));
         StartCoroutine(MoveUIObject_CO(newArc, Vector2.left * 100, false));
@@ -41,7 +43,8 @@ public class TransitionMenu : Menu
 
     // Hide the menu, with animations
     public override void Hide()
-    {StopAllCoroutines();
+    {
+        StopAllCoroutines();
         transform.SetSiblingIndex(0);
 
         StartCoroutine(MoveUIObject_CO(remove, Vector2.zero, true));
@@ -50,7 +53,8 @@ public class TransitionMenu : Menu
 
     // Quickly hide the menu without animations
     public override void ForceHide()
-    {StopAllCoroutines();
+    {
+        StopAllCoroutines();
         transform.SetSiblingIndex(0);
 
         remove.transform.position = Vector2.zero;

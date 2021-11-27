@@ -8,9 +8,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+// Class used to find and manage operation related to reachable markings //
 [Serializable]
 public class ReachableMarkings : MonoBehaviour
 {
+    // Raw classes are a simplified versions of the State and Transition classes
+    // Working with real State and Transition classes are complex and requires heavy operations
+    // This approach is much more flexible and fast, at the cost of memory
     [Serializable]
     public class RawState
     {
@@ -47,18 +51,21 @@ public class ReachableMarkings : MonoBehaviour
         }
     }
 
+    // Represent a Petri net marking
     [Serializable]
     public class Marking
     {
         public List<RawState> states;
         public List<RawTransition> transitions;
 
+        // Deep-copy every RawStates and RawTransitions
         public Marking(List<RawState> states, List<RawTransition> transitions)
         {
             this.states = DeepClone(states);
             this.transitions = DeepClone(transitions);
         }
 
+        // Simple method to check whether this transition is enabled, at this marking
         public bool CheckEnabled(string transition)
         {
             RawTransition checkingTransition = transitions.Find(x => x.ID == transition);
@@ -70,6 +77,7 @@ public class ReachableMarkings : MonoBehaviour
             return true;
         }
 
+        // Overriding ToString() to accurately represent this marking
         public override string ToString()
         {
             string printStr = "[";
@@ -86,11 +94,12 @@ public class ReachableMarkings : MonoBehaviour
         }
     }
 
+    // Store and manage transitions firing sequence
     [Serializable]
     public class FiringSequence
     {
-        public List<string> sequence;
-        public Marking currentMarking;
+        public List<string> sequence; // Hold the names of the transitions fired in this sequence
+        public Marking currentMarking; // Hold the lastest marking
 
         public FiringSequence(List<RawState> states, List<RawTransition> transitions)
         {
@@ -98,22 +107,20 @@ public class ReachableMarkings : MonoBehaviour
             currentMarking = new Marking(states, transitions);
         }
 
+        // "Fire" a transition by adding its name and changing the related states' token count
         public void NewFire(int index)
         {
             RawTransition firingTransition = currentMarking.transitions[index];
             sequence.Add(firingTransition.name);
 
             foreach (string inState in firingTransition.inStates)
-            {
                 currentMarking.states.Find(x => x.ID == inState).tokenCount--;
-            }
 
             foreach (string outState in firingTransition.outStates)
-            {
                 currentMarking.states.Find(x => x.ID == outState).tokenCount++;
-            }
         }
 
+        // Overriding ToString() to accurately represent this sequence
         public override string ToString()
         {
             string printStr = "[";
@@ -132,27 +139,51 @@ public class ReachableMarkings : MonoBehaviour
         }
     }
 
-    [SerializeField] private TextMeshProUGUI text;
+    // Main text space for displaying all markings
+    [SerializeField] private TextMeshProUGUI text; 
+    
+    // The scrollbars
     [SerializeField] private Scrollbar horizontalScrollbar;
     [SerializeField] private Scrollbar verticalScrollbar;
+    
+    // Will be rotated to indicate that the application is calculating
     [SerializeField] private Transform loadingBackground;
+    
+    // Affects rotating speed
     [SerializeField] private AnimationCurve loadingCurve;
+    
+    // Input field for checking a marking's states and sequence
     [SerializeField] private TMP_InputField checkingMarkingField;
+    
+    // Shows the sequence from the mentioned input field
     [SerializeField] private TextMeshProUGUI firedSequence;
 
+    // Simulates the real states and transitions
     private List<RawState> rawStates;
     private List<RawTransition> rawTransitions;
+    
+    // Holds every possible firing sequence (also means markings)
     private List<FiringSequence> firingSequences;
+    
     private bool calculating = false;
-    private int currentMarkingCount = 0;
 
     private void Start()
     {
         checkingMarkingField.onEndEdit.AddListener(OnEndEdit);
     }
 
+    // Starting method
     public void UpdateMarkings()
     {
+        if (calculating)
+        {
+            calculating = false;
+            text.text = "Cancelled";
+            loadingBackground.rotation = Quaternion.Euler(0, 0, 0);
+            StopAllCoroutines();
+            return;
+        }
+        
         calculating = true;
         horizontalScrollbar.value = 0;
         verticalScrollbar.value = 1;
@@ -163,6 +194,7 @@ public class ReachableMarkings : MonoBehaviour
         StartCoroutine(RotateLoadingBackground_CO());
     }
 
+    // Match the raw states/transitions' properties with the real states/transition's properties
     public void Init()
     {
         rawStates = new List<RawState>();
@@ -197,10 +229,10 @@ public class ReachableMarkings : MonoBehaviour
         }
     }
 
+    // Recursive method inside a coroutine to prevent the application from freezing
     public IEnumerator Calculate_CO()
     {
-        firingSequences = new List<FiringSequence>
-            { new FiringSequence(rawStates, rawTransitions) };
+        firingSequences = new List<FiringSequence> { new FiringSequence(rawStates, rawTransitions) };
 
         yield return Recur(firingSequences[0]);
 
@@ -208,16 +240,20 @@ public class ReachableMarkings : MonoBehaviour
         {
             List<RawTransition> currentTransitions = currentSequence.currentMarking.transitions;
 
+            // Loop through all transitions
+            // If a transition is enabled, add a new firing sequence including that transition
             for (int i = 0; i < currentTransitions.Count; i++)
             {
-                if (!currentSequence.currentMarking.CheckEnabled(currentTransitions[i].ID))
-                    continue;
+                if (!currentSequence.currentMarking.CheckEnabled(currentTransitions[i].ID)) continue;
 
                 FiringSequence newSequence = DeepClone(currentSequence);
                 newSequence.NewFire(i);
+                
                 firingSequences.Add(newSequence);
-                yield return new WaitForEndOfFrame();
-                yield return Recur(newSequence);
+                yield return new WaitForEndOfFrame(); // Span the operation through multiple frames
+                
+                // New transitions will be added on top of this sequence in the next calls
+                yield return Recur(newSequence); 
             }
         }
 
@@ -226,17 +262,17 @@ public class ReachableMarkings : MonoBehaviour
         StartCoroutine(PrintAnswer_CO());
         calculating = false;
 
+        // Span the printing process over several frames to prevent freezing
         IEnumerator PrintAnswer_CO()
         {
             for (int i = 0; i < firingSequences.Count; i++)
             {
-                displayText += i.ToString() + ". " + firingSequences[i].currentMarking.ToString() +
-                               "\n";
+                displayText += i + ". " + firingSequences[i].currentMarking + "\n";
                 if (i % 100 == 0) yield return new WaitForEndOfFrame();
             }
 
+            // Visual configurations when the printing process is done
             text.text = displayText;
-
             loadingBackground.rotation = Quaternion.Euler(0, 0, 0);
             float textBoxWidth = text.rectTransform.sizeDelta.x;
             if (textBoxWidth < text.preferredWidth + 10) textBoxWidth = text.preferredWidth + 30;
@@ -245,6 +281,7 @@ public class ReachableMarkings : MonoBehaviour
         }
     }
 
+    // Display hilarious, comedic, smiles-provoking texts while the user are waiting
     IEnumerator FunniText_CO()
     {
         List<string> funniTexts = new List<string>()
@@ -281,11 +318,11 @@ public class ReachableMarkings : MonoBehaviour
         int random = 0;
         int prevRandom = 0;
         float longWaitTime = 5f + Time.time;
+        float extremelyLongWaitTime = 60f + Time.time;
 
         while (true)
         {
-            while (random == prevRandom)
-                random = Random.Range(0, funniTexts.Count);
+            while (random == prevRandom) random = Random.Range(0, funniTexts.Count);
 
             string randomText = funniTexts[random];
             string dots = "";
@@ -295,18 +332,28 @@ public class ReachableMarkings : MonoBehaviour
                 if (calculating) text.text = randomText + dots;
                 else text.text = "Printing your answer" + dots;
 
-                if (Time.time > longWaitTime)
+                if (Time.time > extremelyLongWaitTime)
+                {
+                    text.text += "\n\nExtremely long waiting time? There could be a infinite amount of markings\nCounting up to "
+                                 + firingSequences.Count
+                                 + " reachable markings";
+                }
+                else if (Time.time > longWaitTime)
+                {
                     text.text += "\n\nLong waiting time? \nCounting up to "
                                  + firingSequences.Count
-                                 + " reachable markings.";
-                if (i % 3 == 2) dots += '.';
+                                 + " reachable markings";
+                }
+                
                 yield return new WaitForSeconds(0.3f);
+                if (i % 3 == 2) dots += '.';
             }
 
             prevRandom = random;
         }
     }
 
+    // Rotate the button, indicating that the process is still going on
     IEnumerator RotateLoadingBackground_CO()
     {
         float startTime = Time.time;
@@ -317,8 +364,8 @@ public class ReachableMarkings : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
-
-
+    
+    // Method for deep-copying anything. Needed for the mentioned recursive method
     public static T DeepClone<T>(T obj)
     {
         using (var ms = new MemoryStream())
@@ -331,10 +378,10 @@ public class ReachableMarkings : MonoBehaviour
         }
     }
 
+    // Event method for viewing a marking
     public void OnEndEdit(string strIndex)
     {
         if (strIndex == "") return;
-
         int.TryParse(strIndex, out int index);
 
         new SetMarkingCommand(firingSequences[index].currentMarking).Execute();

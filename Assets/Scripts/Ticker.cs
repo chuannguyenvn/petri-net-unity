@@ -5,15 +5,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+// Handles auto-firing // 
 public class Ticker : MonoBehaviour
 {
     [HideInInspector] public UnityEvent OnTick;
 
     [SerializeField] public float tickPeriod = 1f;
     [SerializeField] private float currentTick = 1f;
-
-
     [SerializeField] bool isTicking = false;
+
     [SerializeField] private Transform pauseBackground;
     [SerializeField] private Transform pauseFace;
     private Image image;
@@ -33,7 +33,7 @@ public class Ticker : MonoBehaviour
         }
 
         if (ProgramManager.Instance.isDisplaying) return;
-        
+
         if (isTicking)
         {
             pauseFace.gameObject.SetActive(true);
