@@ -4,7 +4,6 @@ public abstract class Command
 {
     public Command()
     {
-        Debug.Log("Command initiated");
         ProgramManager.Instance.history.Push(this);
     }
     

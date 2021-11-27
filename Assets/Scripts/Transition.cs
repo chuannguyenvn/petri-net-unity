@@ -133,7 +133,7 @@ public class Transition : Destination
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
             background.onDeselectClick.Invoke();
-            menu.Show(transform.position);
+            if (!menu.isShowing) menu.Show(transform.position);
         }
     }
 }

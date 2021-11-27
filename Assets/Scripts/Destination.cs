@@ -80,16 +80,19 @@ public class Destination : MonoBehaviour, IPointerClickHandler, IPointerUpHandle
 
     public virtual void OnBeginDrag(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
         transform.SetSiblingIndex(transform.parent.childCount - 1);
     }
 
     public virtual void OnEndDrag(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
         background.onDeselectClick.Invoke();
     }
 
     public virtual void OnDrag(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left) return;
         background.onDeselectClick.Invoke();
     }
 

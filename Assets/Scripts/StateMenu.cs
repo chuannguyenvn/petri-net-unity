@@ -15,7 +15,7 @@ public class StateMenu : Menu
     {
         // currentState.addTokenCommands.Enqueue(new AddTokenCommand(currentState));
         // currentState.addTokenCommands.Peek().Execute();
-        
+
         new AddTokenCommand(currentState).Execute();
     }
 
@@ -51,7 +51,10 @@ public class StateMenu : Menu
     // Show the menu, with appropriate selection positions and animations
     public override void Show(Vector2 position)
     {
+        StopAllCoroutines();
+        isShowing = true;
         transform.SetSiblingIndex(0);
+
         transform.position = position;
         StartCoroutine(MoveUIObject_CO(addToken, Vector2.up * 100, false));
         StartCoroutine(MoveUIObject_CO(removeToken, Vector2.down * 100, false));
@@ -66,18 +69,23 @@ public class StateMenu : Menu
     // Hide the menu, with animations
     public override void Hide()
     {
+        StopAllCoroutines();
         transform.SetSiblingIndex(0);
+
         StartCoroutine(MoveUIObject_CO(addToken, Vector2.zero, true));
         StartCoroutine(MoveUIObject_CO(removeToken, Vector2.zero, true));
         StartCoroutine(MoveUIObject_CO(newArc, Vector2.zero, true));
         StartCoroutine(MoveUIObject_CO(remove, Vector2.zero, true));
-        StartCoroutine(MoveUIObject_CO(currentState.inputField.gameObject, Vector2.down * 70, true));
+        StartCoroutine(MoveUIObject_CO(currentState.inputField.gameObject, Vector2.down * 70,
+            true));
         StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject, Vector2.up * 70, true));
     }
 
     // Quickly hide the menu without animations
     public override void ForceHide()
     {
+        StopAllCoroutines();
+
         transform.SetSiblingIndex(0);
         addToken.transform.position = Vector2.zero;
         removeToken.transform.position = Vector2.zero;

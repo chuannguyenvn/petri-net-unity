@@ -24,9 +24,14 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(4);
     }
     
-    public void GetSceneDIY()
+    public void GetSceneNetPlayground()
     {
         SceneManager.LoadScene(5);
+    }
+    
+    public void GetSceneReachableMarkingsPlayground()
+    {
+        SceneManager.LoadScene(6);
     }
 
     public void GetSceneMenu()

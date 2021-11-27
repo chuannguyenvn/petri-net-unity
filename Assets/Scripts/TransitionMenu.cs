@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// The menu that pops out when the user right-click a transition ///
-public class TransitionMenu : Menu 
+public class TransitionMenu : Menu
 {
     [SerializeField] private GameObject remove; // On the right
     [SerializeField] private GameObject newArc; // On the left
@@ -17,7 +17,7 @@ public class TransitionMenu : Menu
         ForceHide();
         //Destroy(gameObject);
     }
-    
+
     // Construct an arc from this transition
     public void NewArc()
     {
@@ -28,28 +28,29 @@ public class TransitionMenu : Menu
         ProgramManager.Instance.mouse.origin = currentTransition;
         Hide();
     }
-    
+
     // Show the menu, with appropriate selection positions and animations
     public override void Show(Vector2 position)
-    {
+    {StopAllCoroutines();
+        isShowing = true;
         transform.SetSiblingIndex(0);
         transform.position = position;
         StartCoroutine(MoveUIObject_CO(remove, Vector2.right * 100, false));
         StartCoroutine(MoveUIObject_CO(newArc, Vector2.left * 100, false));
     }
-    
+
     // Hide the menu, with animations
     public override void Hide()
-    {
+    {StopAllCoroutines();
         transform.SetSiblingIndex(0);
 
         StartCoroutine(MoveUIObject_CO(remove, Vector2.zero, true));
         StartCoroutine(MoveUIObject_CO(newArc, Vector2.zero, true));
     }
-    
+
     // Quickly hide the menu without animations
     public override void ForceHide()
-    {
+    {StopAllCoroutines();
         transform.SetSiblingIndex(0);
 
         remove.transform.position = Vector2.zero;

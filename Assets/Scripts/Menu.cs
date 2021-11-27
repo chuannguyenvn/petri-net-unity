@@ -6,6 +6,7 @@ public abstract class Menu : MonoBehaviour
 {
     private Background background;
     private float speed = 20;
+    public bool isShowing = false;
 
     void Start()
     {
@@ -48,5 +49,6 @@ public abstract class Menu : MonoBehaviour
         if (targetPos == Vector2.zero) transform.position = Vector3.up * 10000;
         UIobject.transform.localPosition = targetPos;
         background.isPerforming = false;
+        isShowing = false;
     }
 }

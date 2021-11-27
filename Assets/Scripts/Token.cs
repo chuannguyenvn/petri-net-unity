@@ -54,6 +54,7 @@ public class Token : MonoBehaviour
     public void MoveTo(Destination targetDestination)
     {
         destination = targetDestination;
+        transform.SetSiblingIndex(transform.parent.childCount - 1);
     }
 
     public void Destroy()

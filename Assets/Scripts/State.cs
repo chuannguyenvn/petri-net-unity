@@ -95,6 +95,7 @@ public class State : Destination
     
     public void ForceRemoveToken()
     {
+        if (tokens.Count == 0) return;
         Token toBeDeleted = tokens[tokens.Count - 1];
         tokens.RemoveAt(tokens.Count - 1);
         toBeDeleted.Destroy();
@@ -141,7 +142,7 @@ public class State : Destination
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
             background.onDeselectClick.Invoke();
-            menu.Show(transform.position);
+            if (!menu.isShowing) menu.Show(transform.position);
         }
     }
 }

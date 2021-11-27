@@ -145,4 +145,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68947f27a602ce54b9d1a6ae6e1dbc91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipText: Go back to the main menu
+  tooltipText: Back to main menu
