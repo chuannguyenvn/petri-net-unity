@@ -10,6 +10,13 @@ public class StateMenu : Menu
 
     public State currentState; // The corresponding state
 
+    public override void Start()
+    {
+        base.Start();
+
+        destination = currentState;
+    }
+
     // Add a new token to currentState
     public void AddToken()
     {
@@ -80,10 +87,10 @@ public class StateMenu : Menu
         StopAllCoroutines();
         transform.SetSiblingIndex(0);
         
-        addToken.transform.position = Vector2.zero;
-        removeToken.transform.position = Vector2.zero;
-        newArc.transform.position = Vector2.zero;
-        remove.transform.position = Vector2.zero;
+        addToken.transform.localPosition = Vector2.zero;
+        removeToken.transform.localPosition = Vector2.zero;
+        newArc.transform.localPosition = Vector2.zero;
+        remove.transform.localPosition = Vector2.zero;
         StartCoroutine(MoveUIObject_CO(currentState.inputField.gameObject, Vector2.down * 70, false));
         StartCoroutine(MoveUIObject_CO(currentState.tokenCount.gameObject, Vector2.up * 70, false));
     }

@@ -115,9 +115,15 @@ public class Destination : MonoBehaviour, IPointerClickHandler, IPointerUpHandle
         if (menu != null) Destroy(menu.gameObject);
     }
 
-    // When disabled, disable the menu as well
-    private void OnDisable()
+    // When enabled, enable the menu as well
+    public virtual void OnEnable()
     {
-        menu.enabled = false;
+        if (menu != null) menu.transform.localPosition = Vector3.zero;
+    }
+
+    // When disabled, disable the menu as well
+    public virtual void OnDisable()
+    {
+        if (menu != null) menu.transform.position = Vector3.up * 10000;
     }
 }

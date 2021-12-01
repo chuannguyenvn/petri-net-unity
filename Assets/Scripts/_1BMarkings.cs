@@ -11,15 +11,14 @@ public class _1BMarkings : MonoBehaviour
 
     void Start()
     {
-        inputField.onEndEdit.AddListener(OnEndEdit);
+        inputField.onValueChanged.AddListener(OnValueChanged);
     }
 
-    public void OnEndEdit(string strMarkingCount)
+    public void OnValueChanged(string strMarkingCount)
     {
-        if (strMarkingCount == "") return;
-        int.TryParse(strMarkingCount, out int markingCount);
-
-        if (markingCount < 0) markingCountText.text = "?";
+        if (strMarkingCount == "") markingCountText.text = "";
+        else if (!int.TryParse(strMarkingCount, out int markingCount) || markingCount < 0)
+            markingCountText.text = "?";
         else markingCountText.text = (0.5f * (markingCount + 1) * (markingCount + 2)).ToString();
     }
 }

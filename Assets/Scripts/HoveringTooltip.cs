@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 // Class used to display a short description when a user hover over an item //
 public class HoveringTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler

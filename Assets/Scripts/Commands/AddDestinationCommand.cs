@@ -32,6 +32,7 @@ public class AddDestinationCommand : Command
         else  ProgramManager.Instance.transitions.RemoveAt(
             ProgramManager.Instance.transitions.FindIndex(x => x.identifier == destination.identifier));
 
+        //destination.gameObject.SetActive(false);
         GameObject.Destroy(destination.gameObject);
     }
 }

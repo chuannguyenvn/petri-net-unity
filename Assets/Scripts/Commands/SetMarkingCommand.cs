@@ -10,12 +10,11 @@ public class SetMarkingCommand : Command
 
     public SetMarkingCommand(ReachableMarkings.Marking marking)
     {
+        rawStates = marking.states;
+        
         tokenCountByStates = new Dictionary<string, int>();
         foreach (State state in ProgramManager.Instance.states)
-        {
-            rawStates = marking.states;
             tokenCountByStates.Add(state.identifier, state.tokens.Count);
-        }
     }
 
     // Execute: Force all states to set their token count with this marking's counts

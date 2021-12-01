@@ -23,10 +23,22 @@ public class Transition : Destination
             menu = ProgramManager.Instance.NewTransitionMenu();
             ((TransitionMenu)menu).currentTransition = this;
         }
-
-        ProgramManager.Instance.ticker.OnTick.AddListener(Fire);
-
+        
         fireCommands = new Queue<FireCommand>();
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+
+        if (ProgramManager.Instance.autoFire != null) ProgramManager.Instance.autoFire.OnTick.AddListener(Fire);
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        
+        if (ProgramManager.Instance.autoFire != null) ProgramManager.Instance.autoFire.OnTick.RemoveListener(Fire);
     }
 
     void Update()
@@ -42,7 +54,6 @@ public class Transition : Destination
             newToken.GetComponent<Token>().MoveTo(outState);
             newToken.GetComponent<Token>().firingCommand = fireCommands.Peek();
             fireCommands.Peek().firingTokens.Add(newToken.GetComponent<Token>());
-            Debug.Log(fireCommands.Peek().firingTokens.Count);
         }
 
         fireCommands.Dequeue();

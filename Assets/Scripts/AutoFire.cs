@@ -3,16 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 // Handles auto-firing // 
-public class Ticker : MonoBehaviour
+public class AutoFire : MonoBehaviour
 {
     [HideInInspector] public UnityEvent OnTick;
 
     [SerializeField] public float tickPeriod = 1f;
     [SerializeField] private float currentTick = 1f;
-    [SerializeField] bool isTicking = false;
+    [FormerlySerializedAs("isTicking")] [SerializeField] bool isFiring = false;
 
     [SerializeField] private Transform pauseBackground;
     [SerializeField] private Transform pauseFace;
@@ -26,7 +27,7 @@ public class Ticker : MonoBehaviour
     void Update()
     {
         currentTick -= Time.deltaTime;
-        if (currentTick <= 0f && isTicking)
+        if (currentTick <= 0f && isFiring)
         {
             OnTick.Invoke();
             currentTick = tickPeriod;
@@ -34,7 +35,7 @@ public class Ticker : MonoBehaviour
 
         if (ProgramManager.Instance.isDisplaying) return;
 
-        if (isTicking)
+        if (isFiring)
         {
             pauseFace.gameObject.SetActive(true);
             pauseBackground.gameObject.SetActive(true);
@@ -52,6 +53,6 @@ public class Ticker : MonoBehaviour
 
     public void ToggleTicking()
     {
-        isTicking = !isTicking;
+        isFiring = !isFiring;
     }
 }

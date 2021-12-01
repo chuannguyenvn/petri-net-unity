@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 /// Singleton class that handle common operations and resources ///
@@ -24,8 +25,8 @@ public class ProgramManager : MonoBehaviour
     // A single default menu, appear when right-clicking the background
     public DefaultMenu defaultMenu;
 
-    // The ticker. Used for auto-firing
-    public Ticker ticker;
+    // The autoFire. Used for auto-firing
+    public AutoFire autoFire;
 
     // This scene's canvas
     public Canvas canvas;

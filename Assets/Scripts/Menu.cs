@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 // Base class for the menu sub classes //
 public abstract class Menu : MonoBehaviour
 {
+    public Destination destination;
     private Background background;
     private float speed = 20;
     public bool isShowing = false;
 
-    void Start()
+    public virtual void Start()
     {
         // Required to perform correctly at different screen size
         speed *= Screen.width / 1920f;
@@ -20,6 +22,11 @@ public abstract class Menu : MonoBehaviour
 
         // Initially move the menu to the back of the screen
         transform.SetSiblingIndex(0);
+    }
+
+    private void Update()
+    {
+        if (destination != null && destination.isActiveAndEnabled) transform.position = destination.transform.position;
     }
 
     // Base methods

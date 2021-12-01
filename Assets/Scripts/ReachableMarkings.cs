@@ -88,7 +88,7 @@ public class ReachableMarkings : MonoBehaviour
                 else printStr += state.tokenCount + "." + state.name + ",";
             }
 
-            printStr = printStr.Substring(0, printStr.Length - 1) + "]";
+            printStr = (printStr.Length > 1 ? printStr.Substring(0, printStr.Length - 1) : "[") + "]";
 
             return printStr;
         }
@@ -232,6 +232,8 @@ public class ReachableMarkings : MonoBehaviour
     // Recursive method inside a coroutine to prevent the application from freezing
     public IEnumerator Calculate_CO()
     {
+        float startingTime = Time.time;
+        
         firingSequences = new List<FiringSequence> { new FiringSequence(rawStates, rawTransitions) };
 
         yield return Recur(firingSequences[0]);
@@ -257,7 +259,7 @@ public class ReachableMarkings : MonoBehaviour
             }
         }
 
-        string displayText = "Total: " + firingSequences.Count + "\n";
+        string displayText = "Total markings: " + firingSequences.Count + "\n" +"Time elapsed: " + (Time.time - startingTime).ToString("F") + "s\n\n";
 
         StartCoroutine(PrintAnswer_CO());
         calculating = false;
@@ -318,7 +320,7 @@ public class ReachableMarkings : MonoBehaviour
         int random = 0;
         int prevRandom = 0;
         float longWaitTime = 5f + Time.time;
-        float extremelyLongWaitTime = 60f + Time.time;
+        float extremelyLongWaitTime = 120f + Time.time;
 
         while (true)
         {
@@ -327,14 +329,14 @@ public class ReachableMarkings : MonoBehaviour
             string randomText = funniTexts[random];
             string dots = "";
 
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 12; i++)
             {
                 if (calculating) text.text = randomText + dots;
-                else text.text = "Printing your answer" + dots;
+                else text.text = "Printing your answer, hold on" + dots;
 
                 if (Time.time > extremelyLongWaitTime)
                 {
-                    text.text += "\n\nExtremely long waiting time? There could be a infinite amount of markings\nCounting up to "
+                    text.text += "\n\nExtremely long waiting time?\nThere could be a infinite amount of markings\nCounting up to "
                                  + firingSequences.Count
                                  + " reachable markings";
                 }
@@ -381,12 +383,32 @@ public class ReachableMarkings : MonoBehaviour
     // Event method for viewing a marking
     public void OnEndEdit(string strIndex)
     {
-        if (strIndex == "") return;
-        int.TryParse(strIndex, out int index);
+        if (firingSequences == null || firingSequences.Count == 0)
+        {
+            checkingMarkingField.text = "No finding were executed";
+            return;
+        }
 
-        new SetMarkingCommand(firingSequences[index].currentMarking).Execute();
+        bool parse = int.TryParse(strIndex, out int index);
+        if (!parse || index < 0)
+        {
+            checkingMarkingField.text = "Invalid input. Please choose a positive integer index";
+        }
+        else if (firingSequences.Count == 1 && index > 0)
+        {
+            checkingMarkingField.text = "There is only 1 possible marking, at index 0";
+        }
+        else if (index >= firingSequences.Count)
+        {
+            checkingMarkingField.text = "Index is too large. Please choose an index from 0 to " +
+                                        (firingSequences.Count - 1);
+        }
+        else
+        {
+            new SetMarkingCommand(firingSequences[index].currentMarking).Execute();
 
-        checkingMarkingField.text = index + ". " + firingSequences[index].currentMarking;
-        firedSequence.text = firingSequences[index].ToString();
+            checkingMarkingField.text = index + ". " + firingSequences[index].currentMarking;
+            firedSequence.text = firingSequences[index].ToString();
+        }
     }
 }

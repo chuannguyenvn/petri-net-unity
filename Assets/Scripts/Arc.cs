@@ -25,7 +25,7 @@ public class Arc : MonoBehaviour
         
         transform.SetSiblingIndex(0); // Arcs should always be behind other objects
         
-       // if (origin == null || target == null) return;
+        if (origin == null || target == null) return;
 
         Vector2 pointA = origin.position * 1920 / Screen.width; // Position of the origin
         Vector2 pointB = target.position * 1920 / Screen.width; // Position of the target

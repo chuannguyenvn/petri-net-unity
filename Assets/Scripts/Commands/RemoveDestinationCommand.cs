@@ -29,7 +29,11 @@ public class RemoveDestinationCommand : Command
         foreach (Destination destination in inDestinations)
         {
             int index = destination.outDestinations.FindIndex(x => x.identifier == this.destination.identifier);
-            if (index != -1) destination.outDestinations.RemoveAt(index);
+            if (index != -1)
+            {
+                destination.outDestinations.RemoveAt(index);
+                
+            }
         }
 
         foreach (Destination destination in outDestinations)

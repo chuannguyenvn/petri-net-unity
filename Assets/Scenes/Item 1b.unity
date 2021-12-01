@@ -675,11 +675,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1465267654568187529, guid: ca36aae99bf08ae4a9e343baeb7035d0, type: 3}
       propertyPath: m_text
-      value: 'Input the total number of tokens and press Enter.
+      value: 'Input the total number of tokens to count the number of possible markings.
 
-        You may
-        then implement a suitable net and find all of its reachable markings in the
-        Reachable Markings Playground.'
+        You
+        may then implement a suitable net and find all of its markings in the Reachable
+        Markings Playground.'
       objectReference: {fileID: 0}
     - target: {fileID: 1465267654568187529, guid: ca36aae99bf08ae4a9e343baeb7035d0, type: 3}
       propertyPath: m_sharedMaterial

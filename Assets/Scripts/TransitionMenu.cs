@@ -8,7 +8,14 @@ public class TransitionMenu : Menu
     [SerializeField] private GameObject newArc; // On the left
 
     public Transition currentTransition; // The corresponding transition
+    
+    public override void Start()
+    {
+        base.Start();
 
+        destination = currentTransition;
+    }
+    
     // Remove this transition. Several methods will be called in order to handle the removal properly
     public void Remove()
     {
@@ -57,7 +64,7 @@ public class TransitionMenu : Menu
         StopAllCoroutines();
         transform.SetSiblingIndex(0);
 
-        remove.transform.position = Vector2.zero;
-        newArc.transform.position = Vector2.zero;
+        remove.transform.localPosition = Vector2.zero;
+        newArc.transform.localPosition = Vector2.zero;
     }
 }
