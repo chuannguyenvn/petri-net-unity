@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Simple class used to trigger button events to load scenes //
+// Simple class used to trigger button events to load scenes (or close the application)//
 public class SceneLoader : MonoBehaviour
 {
     public void GetSceneItem1()
@@ -23,12 +23,12 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
-    
+
     public void GetSceneNetPlayground()
     {
         SceneManager.LoadScene(5);
     }
-    
+
     public void GetSceneReachableMarkingsPlayground()
     {
         SceneManager.LoadScene(6);
@@ -42,5 +42,10 @@ public class SceneLoader : MonoBehaviour
     public void GetSceneItem1b()
     {
         SceneManager.LoadScene(7);
+    }
+
+    public void CloseApplication()
+    {
+        Application.Quit();
     }
 }
