@@ -83,11 +83,8 @@ public class ReachableMarkings : MonoBehaviour
             string printStr = "[";
 
             foreach (RawState state in states)
-            {
-                if (state.tokenCount == 0) printStr += state.name + ",";
-                else printStr += state.tokenCount + "." + state.name + ",";
-            }
-
+                printStr += state.tokenCount + "." + state.name + ",";
+            
             printStr = (printStr.Length > 1 ? printStr.Substring(0, printStr.Length - 1) : "[") + "]";
 
             return printStr;
